@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-24 15:06:35
- * @LastEditTime: 2019-06-24 15:47:04
+ * @LastEditTime: 2019-06-25 17:22:17
  */
 
 import 'package:flutter/material.dart';
@@ -46,19 +46,19 @@ class _ContainerPageState extends State<ContainerPage> {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(IconData(0xe65a, fontFamily: 'iconfont')),
             title: Text('书架'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.book),
+            icon: Icon(IconData(0xe673, fontFamily: 'iconfont')),
             title: Text('书城'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.poll),
+            icon: Icon(IconData(0xe719, fontFamily: 'iconfont')),
             title: Text('精选'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
+            icon: Icon(IconData(0xe718, fontFamily: 'iconfont')),
             title: Text('我的'),
           ),
         ],

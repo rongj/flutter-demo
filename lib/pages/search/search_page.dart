@@ -1,31 +1,32 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-24 15:26:27
- * @LastEditTime: 2019-06-24 15:45:43
+ * @LastEditTime: 2019-06-25 15:50:27
  */
 
 
 import 'package:flutter/material.dart';
 
-class MyPage extends StatefulWidget {
+class SearchPage extends StatefulWidget {
+  // String foo;
+  // String bar;
+
+  // SearchPage({
+  //   Key key,
+  //   this.foo,
+  //   this.bar
+  // }) : super(key: key);
+  
   @override
-  _MyPageState createState() => _MyPageState();
+  _SearchPageState createState() => _SearchPageState();
 }
 
-
-class _MyPageState extends State<MyPage> {
+class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 1,
-      child: Column(
-        children: <Widget>[
-          Expanded(
-            child: Center(
-              child: Text('我的'),
-            ),
-          )
-        ],
+    return Scaffold(
+      body: Center(
+        child: Text('search'),
       ),
     );
   }

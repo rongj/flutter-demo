@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-20 10:22:02
- * @LastEditTime: 2019-06-24 18:30:58
+ * @LastEditTime: 2019-06-25 16:13:36
  */
 
 import 'package:flutter/material.dart';
@@ -22,6 +22,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,  // 隐藏DEBUG字样
       home: ContainerPage(),
       theme: ThemeData(
         backgroundColor: Color(0xFFFEFEFE),
