@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-26 10:43:04
- * @LastEditTime: 2019-06-26 18:55:24
+ * @LastEditTime: 2019-06-26 19:48:56
  */
 
 import 'package:flutter/material.dart';
@@ -33,6 +33,11 @@ class NovelItem extends StatelessWidget {
     Container(
       width: _boxWidth,
       height: _boxWidth / 3 * 4,
+      decoration: BoxDecoration(
+        border: Border.all(color: Color(0xFFE8E8E8), width: 0.5),
+        borderRadius: BorderRadius.circular(2.0),
+        color: Color(0xFFf7f7f7),
+      ),
       child: Icon(
         IconData(0xe60d, fontFamily: 'iconfont'),
       ),

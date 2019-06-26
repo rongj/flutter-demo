@@ -1,15 +1,21 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-26 11:02:31
- * @LastEditTime: 2019-06-26 17:47:03
+ * @LastEditTime: 2019-06-26 20:05:35
  */
 
 import 'package:flutter/material.dart';
 import 'package:app/components/plate_layout.dart';
+import 'package:app/components/novel_item.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 
+class BookCityWeek extends StatefulWidget {
+  @override
+  _BookCityWeekState createState() => _BookCityWeekState();
+}
 
-class BookCityWeek extends StatelessWidget {
+
+class _BookCityWeekState extends State<BookCityWeek> {
   void _onSwiperItemTap(int index) {
     print('点击了第$index个');
   }
@@ -79,7 +85,7 @@ class BookCityWeek extends StatelessWidget {
       "bookid": "1527574858392439392"
     }
   ];
-  
+
   @override
   Widget build(BuildContext context) {
     return PlateLayout(
@@ -99,22 +105,18 @@ class BookCityWeek extends StatelessWidget {
       body: Container(     
         child: Swiper(
           itemBuilder: (BuildContext context, int index) {
-            // return Image.network(
-            //   _bannerItems[index]['img'],
-            //   height: widget.bannerHeight,
-            //   fit: BoxFit.fill,
+            return Image.network(
+              _novelData[index]['img'],
+              height: 200.0,
+              fit: BoxFit.fill,
+            );
+            // return NovelItem(
+            //   title: _novelData[index]['bookname'],
+            //   img: _novelData[index]['img'],
+            //   subtitle: _novelData[index]['author'],
             // );
           },
-          itemCount: _novelData.length % 3,
-          // pagination: SwiperPagination(
-          //   alignment: Alignment.bottomRight,
-          //   margin: EdgeInsets.all(8.0),
-          //   builder: DotSwiperPaginationBuilder(
-          //     size: 5.0,
-          //     activeSize: 5.0,
-          //     space: 2.0
-          //   )
-          // ),
+          itemCount: _novelData.length,
           onTap: _onSwiperItemTap,
         ),
       )
