@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-25 11:55:35
- * @LastEditTime: 2019-06-25 18:42:10
+ * @LastEditTime: 2019-06-26 11:12:56
  */
 
 import 'package:flutter/material.dart';
@@ -28,7 +28,7 @@ class _BookShelfHeaderState extends State<BookShelfHeader> {
     double _bannerHeight = MediaQuery.of(context).size.width / 16 * 8;
     return SliverAppBar(
       pinned: true,
-      expandedHeight: _bannerHeight - 24,
+      expandedHeight: _bannerHeight - 25,
       flexibleSpace: FlexibleSpaceBar(
         background: Stack(
           children: <Widget>[
@@ -69,13 +69,11 @@ class _BookShelfHeaderState extends State<BookShelfHeader> {
       ),
       title: Text(
         widget.fixed ? '书架' : '',
-        style: TextStyle(
-          color: Colors.white
-        ),
       ),
       centerTitle: true,
-      backgroundColor: widget.fixed ? Theme.of(context).primaryColor : Colors.transparent,
-      actionsIconTheme: IconThemeData(color: Colors.white),
+      backgroundColor: widget.fixed ? Colors.white : Colors.transparent,
+      actionsIconTheme: widget.fixed ? null : IconThemeData(color: Colors.white),
+      elevation: 0.3,
       actions: <Widget>[
         IconButton(
           icon: Icon(Icons.search),

@@ -1,10 +1,11 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-25 11:55:35
- * @LastEditTime: 2019-06-25 17:16:45
+ * @LastEditTime: 2019-06-26 18:52:25
  */
 
 import 'package:flutter/material.dart';
+import 'package:app/components/novel_item.dart';
 
 class BookShelfList extends StatefulWidget {
   @override
@@ -12,61 +13,81 @@ class BookShelfList extends StatefulWidget {
 }
 
 class _BookShelfListState extends State<BookShelfList> {
+
+  List<Map> _novelData = const [
+    {
+      "bookname": "法医狂妃",
+      "author": "谁家mm",
+      "img": "http://images01.mopimg.cn/imgs/20181027/20181027_6a449c2a8aa7ac3eba3328ef3ec2bfa5_3_4_200.jpg",
+      "url": "http://wx.mop.com/book/181027135412762131928.html",
+      "bookid": "1540619652762131928"
+    },
+    {
+      "bookname": "九阳天尊",
+      "author": "冰魂",
+      "img": "http://images01.mopimg.cn/imgs/20180908/20180908_cba83311403553830ad9618e3bc73cd0_3_4_200.jpg",
+      "url": "http://wx.mop.com/book/180908071944561186889.html",
+      "bookid": "1536362384561186889"
+    },
+    {
+      "bookname": "胜邪天下，绝世质子妃",
+      "author": "拂风旖旎",
+      "img": "http://images01.mopimg.cn/imgs/20180710/20180710_d188bc93e4bcb342e9b7be86ac579b32_3_4_200.jpg",
+      "url": "http://wx.mop.com/book/180710165330067354904.html",
+      "bookid": "1531212810067354904"
+    },
+    {
+      "bookname": "暴力俏村姑",
+      "author": "风轻灵",
+      "img": "http://images01.mopimg.cn/imgs/20181025/20181025_e58cc6cb66f3475d56bc9ba41bb3b361_3_4_200.jpg",
+      "url": "http://wx.mop.com/book/181025060831710292340.html",
+      "bookid": "1540418911710292340"
+    },
+    {
+      "bookname": "最强仙尊重生都市",
+      "author": "非言",
+      "img": "http://images01.mopimg.cn/imgs/20181018/20181018_c42a89885f7f63d34959fc3433902f2f_3_4_200.jpg",
+      "url": "http://wx.mop.com/book/181018064753015671232.html",
+      "bookid": "1539816473015671232"
+    },
+    {
+      "bookname": "天庭微博红包群",
+      "author": "布凡",
+      "img": "http://images01.mopimg.cn/imgs/20181027/20181027_df3834d2766738c3f0ad081702244987_3_4_200.jpg",
+      "url": "http://wx.mop.com/book/181027123844559796814.html",
+      "bookid": "1540615124559796814"
+    },
+    {
+      "bookname": "田园锦绣：农家小厨娘",
+      "author": "烟月",
+      "img": "http://images01.mopimg.cn/imgs/20181025/20181025_38f31fa5151900988e828181a15f3397_3_4_200.jpg",
+      "url": "http://wx.mop.com/book/181025115426188669247.html",
+      "bookid": "1540439666188669247"
+    }
+  ];
+  
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(bottom: 20.0),
       child: Wrap(
-        spacing: 30.0, // gap between adjacent chips
-        runSpacing: 20.0, // gap between lines
+        spacing: 30.0,
+        runSpacing: 15.0,
         children: _bookList(),
       )
     );
   }
 
-  List<Widget> _bookList() => List.generate(9, (index) {
-    var _boxWidth = (MediaQuery.of(context).size.width - 100) / 3;
-    return Container(
-      width: _boxWidth,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Stack(
-            children: <Widget>[
-              ClipRRect(
-                borderRadius: BorderRadius.circular(2.0),
-                child: Image.network(
-                  'http://images01.mopimg.cn/imgs/20171127/20171127_da3922a8cddf7a3b9e77a1e957e3ae34.jpg',
-                  width: _boxWidth,
-                  height: _boxWidth / 3 * 4,
-                ),
-              ),
-              Positioned(
-                right: 0,
-                top: -1.0,
-                child: Icon(
-                  IconData(0xe637, fontFamily: 'iconfont'),
-                  color: Colors.lightBlueAccent,
-                  // color: Theme.of(context).primaryColor
-                ),
-              ),
-            ],
-          ),
-          Container(
-            height: 32,
-            child: Text(
-              '妖孽郎君别乱来',
-              overflow: TextOverflow.ellipsis,
-              maxLines: 2,
-              style: TextStyle(
-                fontWeight: FontWeight.w500,
-                color: Colors.black87,
-                fontSize: 16.0,
-              )
-            )
-          )
-        ],
-      ),
-    );
+  List<Widget> _bookList() => List.generate(_novelData.length + 1, (index) {
+    if(index < _novelData.length) {
+      return NovelItem(
+        title: _novelData[index]['bookname'],
+        img: _novelData[index]['img'],
+        // subtitle: _novelData[index]['author'],
+        showRecommend: index < 3
+      );
+    }else {
+      return NovelItem(showAdd: true);
+    }
   });
 }

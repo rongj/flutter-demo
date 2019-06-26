@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-24 15:26:27
- * @LastEditTime: 2019-06-25 18:49:20
+ * @LastEditTime: 2019-06-25 18:51:12
  */
 
 
@@ -37,7 +37,7 @@ class _SelectedPageState extends State<SelectedPage> {
         title: Text('精选'),
         centerTitle: true,
         backgroundColor: Colors.white,
-        elevation: 0.0,
+        elevation: 0.3,
         // bottom: PreferredSize(
         //   child: Text('bottom'),
         //   preferredSize: Size(1, 1)
