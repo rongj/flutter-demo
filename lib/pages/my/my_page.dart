@@ -1,11 +1,12 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-24 15:26:27
- * @LastEditTime: 2019-06-27 15:48:30
+ * @LastEditTime: 2019-06-27 18:23:01
  */
 
 
 import 'package:flutter/material.dart';
+// import 'package:dio/dio.dart';
 
 class MyPage extends StatefulWidget {
   @override
@@ -14,36 +15,43 @@ class MyPage extends StatefulWidget {
 
 
 class _MyPageState extends State<MyPage> {
+  String novelType;
+  List novelList = List();
+  ScrollController _controller = ScrollController();
+
+  _MyPageState({ Key key }) {
+    _controller.addListener(() {
+
+    });
+  }
+
+  // 下拉刷新
+  Future _pullToRefresh() async {
+
+  }
+  
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 200,
-      child: ListView(
-        scrollDirection: Axis.horizontal,
-        children: <Widget>[
-          Container(
-            width: 160.0,
-            height: 160.0,
-            color: Colors.red,
-          ),
-          Container(
-            width: 160.0,
-            color: Colors.blue,
-          ),
-          Container(
-            width: 160.0,
-            color: Colors.green,
-          ),
-          Container(
-            width: 160.0,
-            color: Colors.yellow,
-          ),
-          Container(
-            width: 160.0,
-            color: Colors.orange,
-          ),
-        ],
-      )
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('我的'),
+        centerTitle: true,
+        backgroundColor: Colors.white,
+        elevation: 0.3,
+      ),
+      body: RefreshIndicator(
+        onRefresh: _pullToRefresh,
+        child: ListView.builder(
+          itemCount: 50,
+          itemBuilder: (context, index) {
+            return Container(
+              padding: EdgeInsets.all(20),
+              child: Text('item$index'),
+            );
+          },
+        ),
+      ),
     );
   }
 }
+

@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-24 15:06:35
- * @LastEditTime: 2019-06-25 17:22:17
+ * @LastEditTime: 2019-06-27 19:50:13
  */
 
 import 'package:flutter/material.dart';
@@ -25,11 +25,6 @@ class _ContainerPageState extends State<ContainerPage> {
     SelectedPage(),
     MyPage(),
   ];
-
-    // BookShelfPage(),
-    // BookCityPage(),
-    // SelectedPage(),
-    // MyPage(),
 
   void _onItemTapped(int index) {
     setState(() {
