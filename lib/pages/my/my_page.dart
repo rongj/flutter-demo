@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-24 15:26:27
- * @LastEditTime: 2019-06-25 14:02:37
+ * @LastEditTime: 2019-06-27 15:48:30
  */
 
 
@@ -16,17 +16,34 @@ class MyPage extends StatefulWidget {
 class _MyPageState extends State<MyPage> {
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 1,
-      child: Column(
+    return Container(
+      height: 200,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
         children: <Widget>[
-          Expanded(
-            child: Center(
-              child: Text('我的'),
-            ),
-          )
+          Container(
+            width: 160.0,
+            height: 160.0,
+            color: Colors.red,
+          ),
+          Container(
+            width: 160.0,
+            color: Colors.blue,
+          ),
+          Container(
+            width: 160.0,
+            color: Colors.green,
+          ),
+          Container(
+            width: 160.0,
+            color: Colors.yellow,
+          ),
+          Container(
+            width: 160.0,
+            color: Colors.orange,
+          ),
         ],
-      ),
+      )
     );
   }
 }

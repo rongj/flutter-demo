@@ -1,11 +1,13 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-25 11:55:35
- * @LastEditTime: 2019-06-26 11:12:56
+ * @LastEditTime: 2019-06-27 18:13:12
  */
 
 import 'package:flutter/material.dart';
 import 'package:app/pages/search/search_page.dart';
+import 'package:app/components/popup_menu.dart';
+import 'package:app/components/appbar_menu.dart';
 
 class BookShelfHeader extends StatefulWidget {
   BookShelfHeader({
@@ -18,10 +20,11 @@ class BookShelfHeader extends StatefulWidget {
   _BookShelfHeaderState createState() => _BookShelfHeaderState();
 }
 
-class _BookShelfHeaderState extends State<BookShelfHeader> {
-// class BookShelfHeader extends StatelessWidget {
-//   final fixed;
-//   BookShelfHeader({ Key key, this.fixed: false }) : super(key: key);
+class _BookShelfHeaderState extends State<BookShelfHeader> {    
+
+  _onMenuTap(String action) {
+    print('你点了$action');
+  }
   
   @override
   Widget build(BuildContext context) {
@@ -84,11 +87,21 @@ class _BookShelfHeaderState extends State<BookShelfHeader> {
             }));
           }
         ),
-        IconButton(
-          icon: Icon(Icons.more_horiz),
-          tooltip: '更多',
-          onPressed: () => {}
-        ),
+        AppBarMenu(
+          menus: [
+            {
+              'key': 'setting',
+              'text': '书架管理',
+              'icon': Icons.message
+            },
+            {
+              'key': 'sync',
+              'text': '云端同步',
+              'icon': Icons.group_add
+            },
+          ],
+          onTap: _onMenuTap
+        )
       ],
     );
   }

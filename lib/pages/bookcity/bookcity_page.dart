@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-24 15:26:27
- * @LastEditTime: 2019-06-26 20:02:18
+ * @LastEditTime: 2019-06-27 16:12:57
  */
 
 
@@ -10,6 +10,8 @@ import 'bookcity_header.dart';
 import 'bookcity_navs.dart';
 import 'bookcity_week.dart';
 import 'bookcity_quality.dart';
+import 'bookcity_guess.dart';
+import 'bookcity_hot.dart';
 
 class BookCityPage extends StatefulWidget {
   @override
@@ -50,7 +52,9 @@ class _BookCityPageState extends State<BookCityPage> {
             children: <Widget>[
               BookCityNavs(),
               BookCityWeek(),
-              // BookCityQuality(),
+              BookCityQuality(),
+              BookCityGuess(),
+              BookCityHot(),
             ],
           )
         )

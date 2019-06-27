@@ -1,12 +1,12 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-26 11:02:31
- * @LastEditTime: 2019-06-26 20:05:35
+ * @LastEditTime: 2019-06-27 17:13:50
  */
 
 import 'package:flutter/material.dart';
 import 'package:app/components/plate_layout.dart';
-import 'package:app/components/novel_item.dart';
+import 'package:app/components/novel_item_column.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 
 class BookCityWeek extends StatefulWidget {
@@ -14,10 +14,14 @@ class BookCityWeek extends StatefulWidget {
   _BookCityWeekState createState() => _BookCityWeekState();
 }
 
-
 class _BookCityWeekState extends State<BookCityWeek> {
-  void _onSwiperItemTap(int index) {
-    print('点击了第$index个');
+  int _currentIndex = 0;
+  
+  void _onIndexChanged(int index, int total) {
+    print('点击了第$index个, 共$total个');
+    setState(() {
+      _currentIndex = index < total-1 ? _currentIndex + 1 : 0;
+    });
   }
 
   final List<Map> _novelData = const [
@@ -85,39 +89,45 @@ class _BookCityWeekState extends State<BookCityWeek> {
       "bookid": "1527574858392439392"
     }
   ];
+  
 
   @override
   Widget build(BuildContext context) {
+    double _boxWidth = (MediaQuery.of(context).size.width - 70.0) / 3;
+    int _swiperNum = (_novelData.length/3).ceil();
     return PlateLayout(
       title: '一周最热',
       toolBar: Container(
         child: Row(
-          children: List.generate(3, (index) {
+          children: List<Widget>.generate(_swiperNum, (index) {
             return Container(
               width: 10.0,
-              height: index == 1 ? 3.0 : 1.0,
+              height: index == _currentIndex ? 3.0 : 1.0,
               margin: EdgeInsets.only(left: 5.0),
-              color: index == 1 ? Theme.of(context).primaryColor : Colors.black12,
+              color: index == _currentIndex ? Theme.of(context).primaryColor : Colors.black12,
             );
           }),
         ),
       ),
-      body: Container(     
+      body: Container(
+        height: _boxWidth / 3 * 4 + 52.0,
+        margin: EdgeInsets.only(top: 15.0),
         child: Swiper(
           itemBuilder: (BuildContext context, int index) {
-            return Image.network(
-              _novelData[index]['img'],
-              height: 200.0,
-              fit: BoxFit.fill,
+            return Wrap(
+              spacing: 20.0,
+              runSpacing: 15.0,
+              children: List<Widget>.generate(3, (i) {
+                return NovelItemColumn(
+                  title: _novelData[i + index*3]['bookname'],
+                  img: _novelData[i + index*3]['img'],
+                  subtitle: _novelData[i + index*3]['author'],
+                );
+              }),
             );
-            // return NovelItem(
-            //   title: _novelData[index]['bookname'],
-            //   img: _novelData[index]['img'],
-            //   subtitle: _novelData[index]['author'],
-            // );
           },
-          itemCount: _novelData.length,
-          onTap: _onSwiperItemTap,
+          itemCount: _swiperNum,
+          onIndexChanged: (int index) => _onIndexChanged(index, _swiperNum)
         ),
       )
     );

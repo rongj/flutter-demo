@@ -1,11 +1,11 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-25 11:55:35
- * @LastEditTime: 2019-06-26 19:50:11
+ * @LastEditTime: 2019-06-27 16:41:39
  */
 
 import 'package:flutter/material.dart';
-import 'package:app/components/novel_item.dart';
+import 'package:app/components/novel_item_column.dart';
 
 class BookShelfList extends StatefulWidget {
   @override
@@ -69,9 +69,9 @@ class _BookShelfListState extends State<BookShelfList> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 20.0),
+      margin: EdgeInsets.only(bottom: 20.0, left: 15.0, right: 15.0),
       child: Wrap(
-        spacing: 30.0,
+        spacing: 20.0,
         runSpacing: 15.0,
         children: _bookList(),
       )
@@ -80,14 +80,14 @@ class _BookShelfListState extends State<BookShelfList> {
 
   List<Widget> _bookList() => List.generate(_novelData.length + 1, (index) {
     if(index < _novelData.length) {
-      return NovelItem(
+      return NovelItemColumn(
         title: _novelData[index]['bookname'],
         img: _novelData[index]['img'],
         // subtitle: _novelData[index]['author'],
         showRecommend: index < 3
       );
     }else {
-      return NovelItem(showAdd: true);
+      return NovelItemColumn(showAdd: true);
     }
   });
 }

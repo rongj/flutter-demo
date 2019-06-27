@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-26 17:07:18
- * @LastEditTime: 2019-06-26 20:04:02
+ * @LastEditTime: 2019-06-27 16:19:59
  */
 
 import 'package:flutter/material.dart';
@@ -17,6 +17,7 @@ class PlateLayout extends StatelessWidget {
   final String title;
   final Widget toolBar;
   final Widget body;
+  bool notNull(Object o) => o != null;
   
   @override
   Widget build(BuildContext context) {
@@ -45,10 +46,10 @@ class PlateLayout extends StatelessWidget {
                 ],
               ),
               toolBar
-            ],
+            ].where(notNull).toList(),
           ),
           body
-        ],
+        ].where(notNull).toList(),
       ),
     );
   }

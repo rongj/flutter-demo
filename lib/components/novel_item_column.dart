@@ -1,13 +1,14 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-26 10:43:04
- * @LastEditTime: 2019-06-26 19:48:56
+ * @LastEditTime: 2019-06-27 16:41:57
  */
 
 import 'package:flutter/material.dart';
+import 'package:app/components/novel_item_cover.dart';
 
-class NovelItem extends StatelessWidget {
-  NovelItem({
+class NovelItemColumn extends StatelessWidget {
+  NovelItemColumn({
     Key key,
     this.img,
     this.title,
@@ -28,11 +29,12 @@ class NovelItem extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    var _boxWidth = (MediaQuery.of(context).size.width - 100) / 3;
+    double _boxWidth = (MediaQuery.of(context).size.width - 70.0) / 3;
+    double _boxHeight = _boxWidth / 3 * 4;
     return showAdd ?
     Container(
       width: _boxWidth,
-      height: _boxWidth / 3 * 4,
+      height: _boxHeight,
       decoration: BoxDecoration(
         border: Border.all(color: Color(0xFFE8E8E8), width: 0.5),
         borderRadius: BorderRadius.circular(2.0),
@@ -47,31 +49,15 @@ class NovelItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Stack(
-            children: <Widget>[
-              ClipRRect(
-                borderRadius: BorderRadius.circular(2.0),
-                child: Image.network(
-                  img,
-                  width: _boxWidth,
-                  height: _boxWidth / 3 * 4,
-                ),
-              ),
-              showRecommend ? 
-              Positioned(
-                right: 0,
-                top: -1.0,
-                child: Icon(
-                  IconData(0xe637, fontFamily: 'iconfont'),
-                  color: Colors.lightBlueAccent,
-                ),
-              ) : null
-            ].where(notNull).toList(),
+          NovelItemCover(
+            width: _boxWidth,
+            height: _boxHeight,
+            img: img,
+            showRecommend: showRecommend,
           ),
           Container(
             margin: EdgeInsets.only(top: 5.0),
             height: 22.0 * titleMaxLines,
-            // color: Colors.blueAccent,
             child: Text(
               title,
               overflow: TextOverflow.ellipsis,
