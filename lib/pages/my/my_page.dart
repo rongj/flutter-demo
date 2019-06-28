@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-24 15:26:27
- * @LastEditTime: 2019-06-27 18:23:01
+ * @LastEditTime: 2019-06-28 18:12:14
  */
 
 
@@ -54,4 +54,3 @@ class _MyPageState extends State<MyPage> {
     );
   }
 }
-

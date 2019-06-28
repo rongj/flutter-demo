@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-24 15:26:27
- * @LastEditTime: 2019-06-27 16:12:57
+ * @LastEditTime: 2019-06-28 16:56:25
  */
 
 
@@ -18,19 +18,29 @@ class BookCityPage extends StatefulWidget {
   _BookCityPageState createState() => _BookCityPageState();
 }
 
-class _BookCityPageState extends State<BookCityPage> {
+class _BookCityPageState extends State<BookCityPage> with SingleTickerProviderStateMixin {
   ScrollController _controller;
+  TabController _tabController;
+  static List<String> _tabs = ['推荐', '男生', '女生', '免费'];
   bool _fixedAppBar = false;
+
+  // 下拉刷新
+  Function _pullToRefresh;
 
   @override
   void initState() {
     super.initState();
-    _controller = ScrollController();
-    _controller.addListener(() {
+    _controller = ScrollController()..addListener(() {
       setState(() {
-        _fixedAppBar = _controller.offset > 120;
+        _fixedAppBar = _controller.offset > 130;
       });
+      _pullToRefresh(_controller.offset);
     });
+
+    _tabController = TabController(
+      length: _tabs.length,
+      vsync: this,
+    );
   }
 
   @override
@@ -45,15 +55,18 @@ class _BookCityPageState extends State<BookCityPage> {
       controller: _controller,
       slivers: <Widget>[
         BookCityHeader(
-          fixed: _fixedAppBar
+          fixed: _fixedAppBar,
+          tabs: _tabs,
+          tabController: _tabController,
+          onRefresh: _pullToRefresh
         ),
         SliverToBoxAdapter(
           child: Column(
             children: <Widget>[
               BookCityNavs(),
               BookCityWeek(),
-              BookCityQuality(),
               BookCityGuess(),
+              BookCityQuality(),
               BookCityHot(),
             ],
           )

@@ -1,13 +1,13 @@
 /*
  * @Author: Rongj
- * @Date: 2019-06-26 11:02:31
- * @LastEditTime: 2019-06-28 14:57:09
+ * @Date: 2019-06-28 14:20:47
+ * @LastEditTime: 2019-06-28 15:32:12
  */
 
 import 'package:flutter/material.dart';
 import 'package:app/components/novel_items_carousel.dart';
 
-class BookCityWeek extends StatelessWidget {
+class SelectedMan extends StatelessWidget {
   final List<Map> _novelData = const [
     {
       "bookname": "王者荣耀",
@@ -76,9 +76,25 @@ class BookCityWeek extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    return NovelItemsCarousel(
-      title: '一周最热',
-      dataSource: _novelData
+    return Column(
+      children: <Widget>[
+        NovelItemsCarousel(
+          title: '扮猪吃虎',
+          dataSource: _novelData,
+        ),
+        NovelItemsCarousel(
+          title: '特异功能',
+          dataSource: _novelData,
+        ),
+        NovelItemsCarousel(
+          title: '兵王回归',
+          dataSource: _novelData,
+        ),
+        NovelItemsCarousel(
+          title: '山村医生',
+          dataSource: _novelData,
+        ),
+      ],
     );
   }
 }

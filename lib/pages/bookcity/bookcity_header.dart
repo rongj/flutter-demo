@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-26 10:42:07
- * @LastEditTime: 2019-06-26 16:40:38
+ * @LastEditTime: 2019-06-28 17:25:14
  */
 
 import 'package:flutter/material.dart';
@@ -9,66 +9,30 @@ import 'package:app/pages/search/search_page.dart';
 import 'package:app/components/carousel_banner.dart';
 
 class BookCityHeader extends StatefulWidget {
-  const BookCityHeader({
+  BookCityHeader({
     Key key,
+    this.tabs,
     this.fixed,
+    this.tabController,
+    this.onRefresh
   }): super(key: key);
+  final List<String> tabs;
   final bool fixed;
+  final TabController tabController;
+  final Function onRefresh;
 
   @override
   _BookCityHeaderState createState() => _BookCityHeaderState();
 }
 
 class _BookCityHeaderState extends State<BookCityHeader> {
-  // 导航
-  List<String> _tabNavs = [ '推荐', '男生', '女生', '免费']; 
+  // double _pullHeight;
 
-  Widget _buildTabNavs(
-    BuildContext context,
-    List<String> items,
-  ) {
-    // final double _fullWidth = MediaQuery.of(context).size.width;
-    final double _navTitleSize = 18.0;
-    final double _navTitleMargin = 15.0;
-    final double _activeLineWidth = 20.0;
-    // int _activeIndex = _tabNavs.length
-    // double _activeLineLeft = _fullWidth/2 - 22 - _activeLineWidth/2 - _navTitleMargin - ((_navTitleSize + _navTitleMargin) * 2 * 0) ;
-    Color _tabNavDefaultColor = widget.fixed ? null : Colors.white;
-    // int _activeIndex = 0;
-    Color _tabNavActiveColor = widget.fixed ? Theme.of(context).primaryColor : Colors.white;
-    
-    TextStyle _navDefalutStyle = TextStyle(
-      color: _tabNavDefaultColor,
-      fontSize: _navTitleSize,
-      fontWeight: FontWeight.normal
-    );
 
-    return Container(
-      alignment: Alignment.center,
-      child: Stack(
-        overflow: Overflow.visible,
-        children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: items.map((f) {
-              return Container(
-                margin: EdgeInsets.symmetric(horizontal: _navTitleMargin),
-                child: Text(f, style: _navDefalutStyle),
-              );
-            }).toList(),
-          ),
-          Positioned(
-            left: 92.0,
-            top: 28.0,
-            child: Container(
-              width: _activeLineWidth,
-              height: 2.0,
-              color: widget.fixed ? _tabNavActiveColor : _tabNavDefaultColor,
-            ),
-          )
-        ],
-      )
-    );
+  @override
+  void initState() {
+    super.initState();
+
   }
   
   @override
@@ -82,7 +46,25 @@ class _BookCityHeaderState extends State<BookCityHeader> {
           bannerHeight: _bannerHeight
         )
       ),
-      title: _buildTabNavs(context, _tabNavs),
+      title: Container(
+        padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 10.0),
+        child: TabBar(
+          controller: widget.tabController,
+          labelStyle: TextStyle(fontSize: 16.0),
+          labelColor: widget.fixed ? Theme.of(context).primaryColor : Colors.white,
+          labelPadding: EdgeInsets.all(0.0),
+          unselectedLabelColor: widget.fixed ? Colors.black87 : Colors.white,
+          indicatorSize: TabBarIndicatorSize.label,
+          indicator: UnderlineTabIndicator(
+            insets: EdgeInsets.symmetric(horizontal: 8.0),
+            borderSide: BorderSide(
+              width: 2.0,
+              color: widget.fixed ? Theme.of(context).primaryColor : Colors.white
+            )
+          ),
+          tabs: widget.tabs.map((tab) => Tab(text: tab,)).toList(),
+        ),
+      ),
       centerTitle: true,
       backgroundColor: widget.fixed ? Colors.white : Colors.transparent,
       actionsIconTheme: widget.fixed ? null : IconThemeData(color: Colors.white),

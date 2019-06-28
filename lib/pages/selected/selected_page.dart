@@ -1,14 +1,13 @@
 /*
  * @Author: Rongj
- * @Date: 2019-06-24 15:35:16
- * @LastEditTime: 2019-06-27 20:54:59
+ * @Date: 2019-06-24 15:26:27
+ * @LastEditTime: 2019-06-28 15:32:11
  */
 
+
 import 'package:flutter/material.dart';
-import '../bookcity/bookcity_week.dart';
-import '../bookcity/bookcity_quality.dart';
-import '../bookcity/bookcity_guess.dart';
-import '../bookcity/bookcity_hot.dart';
+import './selected_man.dart';
+import './selected_woman.dart';
 
 class SelectedPage extends StatefulWidget {
   @override
@@ -16,90 +15,88 @@ class SelectedPage extends StatefulWidget {
 }
 
 class _SelectedPageState extends State<SelectedPage> with SingleTickerProviderStateMixin {
+  ScrollController _controller;
   TabController _tabController;
-  List<Tab> _tabs = [
-    Tab(text: "男生"),
-    Tab(text: "女生"),
-  ];
+  static List<String> _tabs = ['男生', '女生'];
+
+  // bool _hideTabBar = false;
+  // String _currentTabText = _tabs[0];
 
   @override
   void initState() {
     super.initState();
+    _controller = ScrollController()..addListener(() {
+      // setState(() {
+      //   _hideTabBar = _controller.offset > 300;
+      // });
+    });
+
     _tabController = TabController(
       length: _tabs.length,
       vsync: this,
-    );
+    )..addListener(() {
+      setState(() {
+        // _currentTabText = _tabs[_tabController.index];
+      });
+    });
   }
 
   @override
   void dispose() {
     super.dispose();
+    _controller.dispose();
     _tabController.dispose();
   }
-
 
   // 下拉刷新
   Future _pullToRefresh() async {
 
   }
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: DefaultTabController(
-        length: _tabs.length,
-        child: NestedScrollView(
-          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-            return <Widget>[
-              SliverOverlapAbsorber(
-                handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
-                child: SliverAppBar(
-                  pinned: true,
-                  title: Text('精选'),
-                  centerTitle: true,
-                  backgroundColor: Colors.white,
-                  elevation: 0.3,
-                  bottom: TabBar(
-                    tabs: _tabs.map((tab) => 
-                      Text(
-                        tab.text,
-                        style: TextStyle(fontSize: 12.0)
-                      )
-                    ).toList()
-                  ),
-                  forceElevated: innerBoxIsScrolled,
-                ),
-              )
-            ];
-          },
-          body: RefreshIndicator(
-            onRefresh: _pullToRefresh,
-            child: TabBarView(
+      appBar: AppBar(
+        title: Text('精选'),
+        centerTitle: true,
+        backgroundColor: Colors.white,
+        elevation: 0.3,
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(36.0),
+          child: Container(
+            color: Theme.of(context).secondaryHeaderColor,
+            height: 36.0,
+            padding: EdgeInsets.symmetric(horizontal: 150.0),
+            child: TabBar(
               controller: _tabController,
-              children: _tabs.map((Tab tab) => Builder(
-                builder: (context) => CustomScrollView(
-                  key: PageStorageKey<String>(tab.text),
-                  slivers: <Widget>[
-                    SliverOverlapInjector(
-                      handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context)
-                    ),
-                    SliverToBoxAdapter(
-                      child: Column(
-                        children: <Widget>[
-                          BookCityWeek(),
-                          BookCityQuality(),
-                          BookCityGuess(),
-                          BookCityHot(),
-                        ],
-                      ),
-                    )
-                  ]
-                )
-              )).toList(),
-            ),
+              labelStyle: TextStyle(fontSize: 16.0),
+              labelColor: Theme.of(context).primaryColor,
+              unselectedLabelColor: Colors.black87,
+              indicatorSize: TabBarIndicatorSize.label,
+              indicator: UnderlineTabIndicator(
+                // strokeCap: StrokeCap.round,
+                insets: EdgeInsets.symmetric(horizontal: 8.0),
+                borderSide: BorderSide(width: 2.0, color: Theme.of(context).primaryColor)
+              ),
+              tabs: _tabs.map((tab) => Tab(text: tab,)).toList(),
+            )
           ),
         ),
+      ),
+      body: TabBarView(
+        controller: _tabController,
+        children: _tabs.map((tab) => RefreshIndicator(
+            onRefresh: _pullToRefresh,
+            child: ListView(
+              controller: _controller,
+              children: <Widget>[
+                tab == '男生' ? SelectedMan() : SelectedWoman(),
+              ],
+            ),
+          )
+        ).toList(),
       )
     );
   }
 }
+
