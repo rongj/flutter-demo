@@ -1,12 +1,14 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-24 15:26:27
- * @LastEditTime: 2019-06-28 18:12:14
+ * @LastEditTime: 2019-07-03 20:53:53
  */
 
-
 import 'package:flutter/material.dart';
-// import 'package:dio/dio.dart';
+import 'package:app/widgets/custom_refresh_indicator.dart';
+import 'my_header.dart';
+import 'my_ad.dart';
+import 'my_menus.dart';
 
 class MyPage extends StatefulWidget {
   @override
@@ -15,41 +17,66 @@ class MyPage extends StatefulWidget {
 
 
 class _MyPageState extends State<MyPage> {
-  String novelType;
-  List novelList = List();
-  ScrollController _controller = ScrollController();
+  ScrollController _controller;
+  bool _fixedAppBar = false;
 
-  _MyPageState({ Key key }) {
-    _controller.addListener(() {
-
+  @override
+  void initState() {
+    super.initState();
+    _controller = ScrollController()..addListener(() {
+      setState(() {
+        _fixedAppBar = _controller.position.pixels > 130;
+      });
     });
   }
 
-  // 下拉刷新
-  Future _pullToRefresh() async {
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
+  }
 
+  // 下拉刷新
+  Future<bool> _pullToRefresh() async {
+    return true;
   }
   
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('我的'),
-        centerTitle: true,
-        backgroundColor: Colors.white,
-        elevation: 0.3,
-      ),
-      body: RefreshIndicator(
-        onRefresh: _pullToRefresh,
-        child: ListView.builder(
-          itemCount: 50,
-          itemBuilder: (context, index) {
-            return Container(
-              padding: EdgeInsets.all(20),
-              child: Text('item$index'),
-            );
-          },
-        ),
+    Widget build(BuildContext context) {
+    return PullToRefreshNotification(
+      color: Colors.blue,
+      pullBackOnRefresh: true,
+      onRefresh: _pullToRefresh,
+      child: CustomScrollView(
+        // physics: AlwaysScrollableScrollPhysics(),
+        controller: _controller,
+        slivers: <Widget>[
+          PullToRefreshContainer((PullToRefreshScrollNotificationInfo info) => 
+            MyHeader(
+              info: info,
+              fixed: _fixedAppBar
+            )
+          ),
+          SliverToBoxAdapter(
+            child: Column(
+              children: <Widget>[
+                MyAd(),
+                MyMenus(),
+                Container(
+                  width: MediaQuery.of(context).size.width - 80.0,
+                  height: 44.0,
+                  margin: EdgeInsets.only(bottom: 30.0),
+                  child: FlatButton(
+                    child: Text('退出'),
+                    color: Colors.black12,
+                    shape: StadiumBorder(),
+                    onPressed: () {},
+                  ),
+                ),
+              ],
+            )
+          )
+        ],
       ),
     );
   }

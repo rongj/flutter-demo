@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-24 15:26:27
- * @LastEditTime: 2019-06-28 09:11:54
+ * @LastEditTime: 2019-07-02 09:35:53
  */
 
 import 'package:flutter/material.dart';
@@ -24,7 +24,7 @@ class _BookShelfPageState extends State<BookShelfPage> {
     _controller = ScrollController();
     _controller.addListener(() {
       setState(() {
-        _fixedAppBar = _controller.offset > 130;
+        _fixedAppBar = _controller.position.pixels > 130;
       });
     });
   }

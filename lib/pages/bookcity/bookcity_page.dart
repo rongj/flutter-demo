@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-24 15:26:27
- * @LastEditTime: 2019-06-28 16:56:25
+ * @LastEditTime: 2019-07-02 09:36:01
  */
 
 
@@ -32,9 +32,9 @@ class _BookCityPageState extends State<BookCityPage> with SingleTickerProviderSt
     super.initState();
     _controller = ScrollController()..addListener(() {
       setState(() {
-        _fixedAppBar = _controller.offset > 130;
+        _fixedAppBar = _controller.position.pixels > 130;
       });
-      _pullToRefresh(_controller.offset);
+      _pullToRefresh(_controller.position.pixels);
     });
 
     _tabController = TabController(

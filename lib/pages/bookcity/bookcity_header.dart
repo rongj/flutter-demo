@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-26 10:42:07
- * @LastEditTime: 2019-06-28 17:25:14
+ * @LastEditTime: 2019-07-03 20:50:09
  */
 
 import 'package:flutter/material.dart';
@@ -27,8 +27,6 @@ class BookCityHeader extends StatefulWidget {
 
 class _BookCityHeaderState extends State<BookCityHeader> {
   // double _pullHeight;
-
-
   @override
   void initState() {
     super.initState();

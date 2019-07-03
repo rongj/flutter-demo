@@ -1,11 +1,10 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-24 15:26:27
- * @LastEditTime: 2019-06-28 11:14:48
+ * @LastEditTime: 2019-07-02 10:53:00
  */
 
 import 'package:flutter/material.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
 
 // class SearchPage extends StatefulWidget {
 //   @override
@@ -22,6 +21,12 @@ import 'package:flutter_swiper/flutter_swiper.dart';
 //     );
 //   }
 // }
+
+class SearchPage extends StatefulWidget {
+  @override
+  _SearchPageState createState() => _SearchPageState();
+}
+
 class _SearchPageState extends State<SearchPage> {
   ScrollController _controller;
   int _count = 10;
@@ -43,10 +48,10 @@ class _SearchPageState extends State<SearchPage> {
 
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
+    return MaterialApp(
       home: Scaffold(
-        body: new Container(
-          child: new NotificationListener(
+        body: Container(
+          child: NotificationListener(
             onNotification: (notification) {
               if (notification is ScrollUpdateNotification &&
                   notification.depth == 0 &&
@@ -81,17 +86,17 @@ class _SearchPageState extends State<SearchPage> {
                 slivers: <Widget>[
                   const SliverAppBar(
                     pinned: true,
-                    title: const Text('搜索'),
+                    title: Text('搜索'),
                     elevation: 0.0,
                     leading: Icon(Icons.arrow_back),
                   ),
            
-                  new SliverToBoxAdapter(
-                    child: new Visibility(
-                      child: new Container(
+                  SliverToBoxAdapter(
+                    child: Visibility(
+                      child: Container(
                         padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
-                        child: new Center(
-                          child: new Text(loadingText),
+                        child: Center(
+                          child: Text(loadingText),
                         ),
                       ),
                       visible: _isLoding,
@@ -118,14 +123,7 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   Future<String> _RrefreshPull() async {
-    await Future.delayed(new Duration(seconds: 3));
+    await Future.delayed(Duration(seconds: 3));
     return "_RrefreshPull";
-  }
-}
-
-class SearchPage extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    return _SearchPageState();
   }
 }
