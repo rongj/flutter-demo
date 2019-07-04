@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-04 14:17:19
- * @LastEditTime: 2019-07-04 20:04:19
+ * @LastEditTime: 2019-07-04 20:07:31
  */
 
 import 'package:flutter/material.dart';
@@ -101,6 +101,7 @@ class _BookDetailPageState extends State<BookDetailPage> {
         child: Row(
           children: <Widget>[
             Container(
+              width: MediaQuery.of(context).size.width / 3,
               child: FlatButton(
                 onPressed: (){},
                 child: Column(
@@ -112,23 +113,25 @@ class _BookDetailPageState extends State<BookDetailPage> {
               )
             ),
             Container(
+              width: MediaQuery.of(context).size.width / 3,
               child: FlatButton(
                 onPressed: (){},
                 child: Column(
                   children: <Widget>[
-                    Icon(IconData(0xe65d, fontFamily: 'iconfont')),
-                    Text('加入书架')
+                    Icon(IconData(0xe693, fontFamily: 'iconfont')),
+                    Text('免费试读')
                   ],
                 ),
               )
             ),
             Container(
+              width: MediaQuery.of(context).size.width / 3,
               child: FlatButton(
                 onPressed: (){},
                 child: Column(
                   children: <Widget>[
-                    Icon(IconData(0xe65d, fontFamily: 'iconfont')),
-                    Text('加入书架')
+                    Icon(IconData(0xe791, fontFamily: 'iconfont')),
+                    Text('离线下载')
                   ],
                 ),
               )
