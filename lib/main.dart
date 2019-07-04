@@ -19,8 +19,8 @@ void main() async {
     // print('Running on ${androidInfo.model}');
     
     //设置Android头部的导航栏透明
-    SystemUiOverlayStyle systemUiOverlayStyle = SystemUiOverlayStyle(statusBarColor: Colors.transparent);
-    SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
+    // SystemUiOverlayStyle systemUiOverlayStyle = SystemUiOverlayStyle(statusBarColor: Colors.transparent);
+    // SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
   }
 }
 

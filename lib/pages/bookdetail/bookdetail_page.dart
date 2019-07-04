@@ -8,7 +8,9 @@ import 'package:flutter/material.dart';
 import 'bookdetail_header.dart';
 import 'bookdetail_info.dart';
 import 'bookdetail_links.dart';
+import 'bookdetail_comment.dart';
 import 'bookdetail_relevant.dart';
+import 'bookdetail_bottom.dart';
 
 class BookDetailPage extends StatefulWidget {
   @override
@@ -92,53 +94,12 @@ class _BookDetailPageState extends State<BookDetailPage> {
             BookDetailHeader(detail: _detail),
             BookDetailInfo(detail: _detail),
             BookDetailLinks(detail: _detail),
+            BookDetailComment(),
             BookDetailRelevant()
           ],
         ),
       ),
-      bottomNavigationBar: Container(
-        height: 50.0,
-        child: Row(
-          children: <Widget>[
-            Container(
-              width: MediaQuery.of(context).size.width / 3,
-              child: FlatButton(
-                onPressed: (){},
-                child: Column(
-                  children: <Widget>[
-                    Icon(IconData(0xe65d, fontFamily: 'iconfont')),
-                    Text('加入书架')
-                  ],
-                ),
-              )
-            ),
-            Container(
-              width: MediaQuery.of(context).size.width / 3,
-              child: FlatButton(
-                onPressed: (){},
-                child: Column(
-                  children: <Widget>[
-                    Icon(IconData(0xe693, fontFamily: 'iconfont')),
-                    Text('免费试读')
-                  ],
-                ),
-              )
-            ),
-            Container(
-              width: MediaQuery.of(context).size.width / 3,
-              child: FlatButton(
-                onPressed: (){},
-                child: Column(
-                  children: <Widget>[
-                    Icon(IconData(0xe791, fontFamily: 'iconfont')),
-                    Text('离线下载')
-                  ],
-                ),
-              )
-            )
-          ],
-        ),
-      )
+      bottomNavigationBar: BookDetailBottom()
     );
   }
 }

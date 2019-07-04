@@ -26,7 +26,7 @@ class MyHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double _dragOffset = info?.dragOffset ?? 0.0;
-    double _spinOffset =  _dragOffset - 20 > 40.0 ? 40.0 :  _dragOffset - 20;
+    double _spinOffset =  _dragOffset - 32 > 40.0 ? 40.0 :  _dragOffset - 32;
     DateTime _time = lastRefreshTime ?? DateTime.now();
     String _refresText = '上次更新：' + DateFormat("yyyy-MM-dd HH:mm:ss").format(_time);
     if (info?.mode == RefreshIndicatorMode.armed) {

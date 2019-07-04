@@ -25,11 +25,13 @@ class _BookDetailInfoState extends State<BookDetailInfo> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
+      padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+      color: Colors.white,
       child: Column(
         children: <Widget>[
           Text(
             widget.detail['desc'],
+            style: TextStyle(fontSize: 15.0),
             maxLines: 3,
             overflow: TextOverflow.ellipsis,
           ),

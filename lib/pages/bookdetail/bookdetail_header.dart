@@ -18,6 +18,7 @@ class BookDetailHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 140.0,
+      color: Colors.white,
       child: Stack(
         children: <Widget>[
           Container(
@@ -38,7 +39,7 @@ class BookDetailHeader extends StatelessWidget {
                   style: TextStyle(color: Colors.white, fontSize: 20.0, height: 1.2),
                 ),
                 Container(
-                  margin: EdgeInsets.only(top: 5.0, bottom: 10.0),
+                  margin: EdgeInsets.only(top: 5.0, bottom: 15.0),
                   child: Row(
                     children: <Widget>[
                       Text(
