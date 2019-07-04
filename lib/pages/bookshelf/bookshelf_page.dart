@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-24 15:26:27
- * @LastEditTime: 2019-07-02 09:35:53
+ * @LastEditTime: 2019-07-04 14:14:25
  */
 
 import 'package:flutter/material.dart';
@@ -52,8 +52,6 @@ class _BookShelfPageState extends State<BookShelfPage> {
           )
         )
       ],
-            
-            
     );
   }
 }

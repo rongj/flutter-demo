@@ -1,11 +1,13 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-25 11:55:35
- * @LastEditTime: 2019-06-27 16:41:39
+ * @LastEditTime: 2019-07-04 14:21:58
  */
 
 import 'package:flutter/material.dart';
 import 'package:app/components/novel_item_column.dart';
+import 'package:app/pages/bookdetail/bookdetail_page.dart';
+import 'package:app/pages/bookcity/bookcity_page.dart';
 
 class BookShelfList extends StatefulWidget {
   @override
@@ -13,7 +15,6 @@ class BookShelfList extends StatefulWidget {
 }
 
 class _BookShelfListState extends State<BookShelfList> {
-
   List<Map> _novelData = const [
     {
       "bookname": "法医狂妃",
@@ -65,6 +66,15 @@ class _BookShelfListState extends State<BookShelfList> {
       "bookid": "1540439666188669247"
     }
   ];
+
+  bool showCheck = false;
+
+  // 长按多选
+  _onLongPress() {
+    this.setState(() {
+      showCheck = true;
+    });
+  }
   
   @override
   Widget build(BuildContext context) {
@@ -80,14 +90,30 @@ class _BookShelfListState extends State<BookShelfList> {
 
   List<Widget> _bookList() => List.generate(_novelData.length + 1, (index) {
     if(index < _novelData.length) {
-      return NovelItemColumn(
-        title: _novelData[index]['bookname'],
-        img: _novelData[index]['img'],
-        // subtitle: _novelData[index]['author'],
-        showRecommend: index < 3
+      return InkWell(
+        onTap: () {
+          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context){
+            return BookDetailPage();
+          }));
+        },
+        onLongPress: _onLongPress,
+        child: NovelItemColumn(
+          title: _novelData[index]['bookname'],
+          img: _novelData[index]['img'],
+          // subtitle: _novelData[index]['author'],
+          showRecommend: index < 3,
+          ableCheck: showCheck && index >= 3
+        ),
       );
     }else {
-      return NovelItemColumn(showAdd: true);
+      return InkWell(
+        onTap: () {
+          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context){
+            return BookCityPage();
+          }));
+        },
+        child: NovelItemColumn(showAdd: true),
+      );
     }
   });
 }

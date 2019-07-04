@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-27 15:16:02
- * @LastEditTime: 2019-06-28 15:16:39
+ * @LastEditTime: 2019-07-04 15:22:41
  */
 
 import 'package:flutter/material.dart';
@@ -12,13 +12,15 @@ class NovelItemCover extends StatelessWidget {
     this.width,
     this.height,
     this.img,
-    this.showRecommend
+    this.showRecommend = false,
+    this.ableCheck = false
   }): super(key: key);
 
   final double width;
   final double height;
   final String img;
   final bool showRecommend;
+  final bool ableCheck;
   bool notNull(Object o) => o != null;
   
   @override
@@ -45,7 +47,30 @@ class NovelItemCover extends StatelessWidget {
             IconData(0xe637, fontFamily: 'iconfont'),
             color: Colors.lightBlueAccent,
           ),
-        ) : null
+        ) : null,
+        ableCheck ? 
+        Positioned(
+          top: 0,
+          left: 0,
+          child: Opacity(
+            opacity: 0.4,
+            child: Container(
+              width: width,
+              height: height,
+              color: Colors.black,
+            ),
+          )
+        ) : null,
+        ableCheck ? 
+        Positioned(
+          bottom: -10.0,
+          right: -10.0,
+          child: Checkbox(
+            value: true,
+            activeColor: Theme.of(context).primaryColor,
+            onChanged: (bool val) => {},
+          )
+        ) : null,
       ].where(notNull).toList(),
     );
   }

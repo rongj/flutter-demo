@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-03 16:36:00
- * @LastEditTime: 2019-07-03 17:19:52
+ * @LastEditTime: 2019-07-04 12:02:22
  */
 
 import 'package:flutter/material.dart';
@@ -39,17 +39,14 @@ class MyHeaderAvatar extends StatelessWidget {
             ],
           ),
           Container(
-            padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 16.0),
-            decoration: BoxDecoration(
+            width: 70.0,
+            height: 28.0,
+            child: FlatButton(
+              onPressed: (){},
               color: Colors.white,
-              borderRadius: BorderRadius.circular(20.0),
-            ),
-            child: Text(
-              '签到',
-              style: TextStyle(
-                fontSize: 14.0
-              )
-            ),
+              shape: StadiumBorder(),
+              child: Text( '签到', style: TextStyle(fontSize: 14.0)),
+            )
           )
         ],
       ),
