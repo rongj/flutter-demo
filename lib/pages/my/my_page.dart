@@ -1,9 +1,10 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-24 15:26:27
- * @LastEditTime: 2019-07-03 20:53:53
+ * @LastEditTime: 2019-07-04 10:21:34
  */
 
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:app/widgets/custom_refresh_indicator.dart';
 import 'my_header.dart';
@@ -38,17 +39,28 @@ class _MyPageState extends State<MyPage> {
 
   // 下拉刷新
   Future<bool> _pullToRefresh() async {
-    return true;
+    final Completer<bool> completer = Completer<bool>();
+    Timer(const Duration(seconds: 2), () {
+      completer.complete(true);
+    });
+    return completer.future.then((bool success) {
+      if (success) {
+        print('refresh data');
+        // setState(() {});
+      }
+      return success;
+    });
   }
   
   @override
     Widget build(BuildContext context) {
     return PullToRefreshNotification(
       color: Colors.blue,
+      maxDragOffset: 120.0,
       pullBackOnRefresh: true,
       onRefresh: _pullToRefresh,
       child: CustomScrollView(
-        // physics: AlwaysScrollableScrollPhysics(),
+        physics: AlwaysScrollableScrollPhysics(),
         controller: _controller,
         slivers: <Widget>[
           PullToRefreshContainer((PullToRefreshScrollNotificationInfo info) => 

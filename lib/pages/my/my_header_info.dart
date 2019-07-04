@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-03 16:36:00
- * @LastEditTime: 2019-07-03 21:03:42
+ * @LastEditTime: 2019-07-04 09:29:22
  */
 
 import 'package:flutter/material.dart';
@@ -39,7 +39,7 @@ class MyHeaderInfo extends StatelessWidget {
           ),
           Column(
             children: <Widget>[
-              Icon(IconData(0xe83d, fontFamily: 'iconfont'), color: Colors.white, size: 16.0,),
+              Icon(IconData(0xe83d, fontFamily: 'iconfont'), color: Colors.white, size: 20.0,),
               Text('VIP', style: _tsBottom),
             ],
           ),

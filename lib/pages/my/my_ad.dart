@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-26 10:42:44
- * @LastEditTime: 2019-07-03 20:32:41
+ * @LastEditTime: 2019-07-04 09:28:32
  */
 
 import 'package:flutter/material.dart';
@@ -34,7 +34,6 @@ class MyAd extends StatelessWidget {
           return Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5.0),
-              color: Colors.redAccent,
               image: DecorationImage(
                 image: NetworkImage(_bannerItems[index]['img']),
                 fit: BoxFit.fill,

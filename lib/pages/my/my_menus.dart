@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-03 16:36:39
- * @LastEditTime: 2019-07-03 20:32:23
+ * @LastEditTime: 2019-07-04 11:11:05
  */
 
 import 'package:flutter/material.dart';
@@ -65,52 +65,49 @@ class MyMenus extends StatelessWidget {
       margin: EdgeInsets.only(bottom: 30.0),
       child: Column(
         children: _menus.map((item) {
-          return Container(
-            padding: EdgeInsets.only(left: 15.0),
-            height: 50.0,
+          return FlatButton(
+            onPressed: (){},
             color: Colors.white,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                Icon(item['icon'], size: 20.0,),
-                Expanded(
-                  child: Container(
-                    margin: EdgeInsets.only(left: 10.0),
-                    padding: EdgeInsets.only(right: 5.0),
-                    decoration: BoxDecoration(
-                      border: Border(bottom: BorderSide(color: Colors.black12, width: 0.8))
+            child: Container(
+              padding: EdgeInsets.only(left: 15.0),
+              height: 50.0,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  Icon(item['icon'], size: 20.0,),
+                  Expanded(
+                    child: Container(
+                      margin: EdgeInsets.only(left: 10.0),
+                      padding: EdgeInsets.only(right: 5.0),
+                      decoration: BoxDecoration(
+                        border: Border(bottom: BorderSide(color: Colors.black12, width: 0.8))
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text(
+                            item['text'],
+                            style: TextStyle(fontSize: 16.0),
+                          ),
+                          Row(
+                            children: <Widget>[
+                              item['addonAfter'] ?? null,
+                              Icon(
+                                IconData(0xe633, fontFamily: 'iconfont'),
+                                color: Colors.black26,
+                              )
+                            ].where((Object o) => o != null).toList(),
+                          )
+                        ]
+                      ),
                     ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Text(
-                          item['text'],
-                          style: TextStyle(fontSize: 16.0),
-                        ),
-                        Row(
-                          children: <Widget>[
-                            item['addonAfter'] ?? null,
-                            Icon(
-                              IconData(0xe633, fontFamily: 'iconfont'),
-                              color: Colors.black26,
-                            )
-                          ].where((Object o) => o != null).toList(),
-                        )
-                      ]
-                    ),
-                  ),
-                )
-              ],
-            ),
+                  )
+                ],
+              ),
+            )
           );
         }).toList(),
-      ),      
-      // child: ListView.builder(
-      //   itemCount: _menus.length,
-      //   itemBuilder: (BuildContext context, int index) {
-          
-      //   }
-      // ),
+      ),
     );
   }
 }

@@ -1,11 +1,13 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-03 15:06:03
- * @LastEditTime: 2019-07-03 20:50:36
+ * @LastEditTime: 2019-07-04 10:35:25
  */
 
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:app/widgets/custom_refresh_indicator.dart';
 import 'my_header_avatar.dart';
 import 'my_header_info.dart';
 
@@ -13,17 +15,34 @@ class MyHeader extends StatelessWidget {
   MyHeader({
     Key key,
     this.fixed,
-    this.info
+    this.info,
+    this.lastRefreshTime
   }): super(key: key);
   
   final info;
   final bool fixed;
+  final DateTime lastRefreshTime;
   
   @override
   Widget build(BuildContext context) {
-    print(info?.mode);
-    print(info?.dragOffset);
-    var offset = info?.dragOffset ?? 0.0;
+    double _dragOffset = info?.dragOffset ?? 0.0;
+    double _spinOffset =  _dragOffset - 20 > 40.0 ? 40.0 :  _dragOffset - 20;
+    DateTime _time = lastRefreshTime ?? DateTime.now();
+    String _refresText = '上次更新：' + DateFormat("yyyy-MM-dd HH:mm:ss").format(_time);
+    if (info?.mode == RefreshIndicatorMode.armed) {
+      _refresText = "释放刷新";
+    } else if ((info?.mode == RefreshIndicatorMode.refresh ||
+        info?.mode == RefreshIndicatorMode.snap)) {
+      _refresText = "更新中...";
+      _spinOffset = 40.0;
+      _dragOffset = 60.0;
+    } else if (info?.mode == RefreshIndicatorMode.done) {
+      _refresText = "刷新完成";
+    } else if (info?.mode == RefreshIndicatorMode.drag) {
+      _refresText = "下拉刷新";
+    } else if (info?.mode == RefreshIndicatorMode.canceled) {
+      _refresText = "取消刷新";
+    }
 
     return SliverAppBar(
       pinned: true,
@@ -31,12 +50,12 @@ class MyHeader extends StatelessWidget {
       centerTitle: true,
       backgroundColor: Colors.white,
       elevation: 0.3,
-      expandedHeight: 220.0 + offset,
+      expandedHeight: 220.0 + _dragOffset,
       actionsIconTheme: fixed ? null : IconThemeData(color: Colors.white),
       actions: <Widget>[
         IconButton(
           icon: Icon(IconData(0xe720, fontFamily: 'iconfont')),
-          tooltip: '设置',
+          tooltip: '消息',
           onPressed: () {}
         ),
       ],
@@ -53,7 +72,7 @@ class MyHeader extends StatelessWidget {
               )
             ),
             Positioned(
-              top: -40.0,
+              top: _spinOffset,
               child: Container(
                 alignment: Alignment.center,
                 width: MediaQuery.of(context).size.width,
@@ -64,7 +83,7 @@ class MyHeader extends StatelessWidget {
                       size: 20.0,
                     ),
                     Text(
-                      '上次更新时间',
+                      _refresText,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 10.0,

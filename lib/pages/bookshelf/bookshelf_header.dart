@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-25 11:55:35
- * @LastEditTime: 2019-06-28 10:01:58
+ * @LastEditTime: 2019-07-04 09:27:43
  */
 
 import 'package:flutter/material.dart';
@@ -19,8 +19,7 @@ class BookShelfHeader extends StatefulWidget {
   _BookShelfHeaderState createState() => _BookShelfHeaderState();
 }
 
-class _BookShelfHeaderState extends State<BookShelfHeader> {    
-
+class _BookShelfHeaderState extends State<BookShelfHeader> {
   _onMenuTap(String action) {
     print('你点了$action');
   }
