@@ -1,10 +1,11 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-04 14:28:38
- * @LastEditTime: 2019-07-04 18:25:09
+ * @LastEditTime: 2019-07-05 14:04:07
  */
 
 import 'package:flutter/material.dart';
+import '../catalog/catalog_page.dart';
 
 class BookDetailLinks extends StatelessWidget {
   BookDetailLinks({
@@ -19,7 +20,11 @@ class BookDetailLinks extends StatelessWidget {
       child: Column(
         children: <Widget>[
           FlatButton(
-            onPressed: (){},
+            onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (BuildContext context){
+                return CataLogPage();
+              }));
+            },
             color: Colors.white,
             child: Container(
               height: 44.0,

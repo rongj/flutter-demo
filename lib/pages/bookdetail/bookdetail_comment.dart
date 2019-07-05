@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-04 14:28:38
- * @LastEditTime: 2019-07-04 18:25:09
+ * @LastEditTime: 2019-07-05 09:38:11
  */
 
 import 'package:flutter/material.dart';
@@ -53,9 +53,12 @@ class BookDetailComment extends StatelessWidget {
             ),
           ),
 
-          FlatButton(
-            onPressed: (){},
-            child: Text('查看全部书评', style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 16.0),),
+          Container(
+            width: MediaQuery.of(context).size.width - 40.0,
+            child: FlatButton(
+              onPressed: (){},
+              child: Text('查看全部书评', style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 16.0),),
+            )
           )
         ],
       ),
