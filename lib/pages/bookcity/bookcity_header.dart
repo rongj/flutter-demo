@@ -1,12 +1,12 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-26 10:42:07
- * @LastEditTime: 2019-07-03 20:50:09
+ * @LastEditTime: 2019-07-08 19:54:02
  */
 
 import 'package:flutter/material.dart';
-import 'package:app/pages/search/search_page.dart';
 import 'package:app/components/carousel_banner.dart';
+import 'package:app/routers.dart';
 
 class BookCityHeader extends StatefulWidget {
   BookCityHeader({
@@ -72,9 +72,7 @@ class _BookCityHeaderState extends State<BookCityHeader> {
           icon: Icon(Icons.search),
           tooltip: '搜索',
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (BuildContext context){
-              return SearchPage();
-            }));
+            Router.push(context, Router.searchPage);
           }
         ),
       ],

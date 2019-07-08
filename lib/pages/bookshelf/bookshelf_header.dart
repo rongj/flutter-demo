@@ -1,12 +1,12 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-25 11:55:35
- * @LastEditTime: 2019-07-04 13:39:38
+ * @LastEditTime: 2019-07-08 19:57:07
  */
 
 import 'package:flutter/material.dart';
-import 'package:app/pages/search/search_page.dart';
 import 'package:app/components/appbar_menu.dart';
+import 'package:app/routers.dart';
 
 class BookShelfHeader extends StatefulWidget {
   BookShelfHeader({
@@ -80,9 +80,7 @@ class _BookShelfHeaderState extends State<BookShelfHeader> {
           icon: Icon(Icons.search),
           tooltip: '搜索',
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (BuildContext context){
-              return SearchPage();
-            }));
+            Router.push(context, Router.searchPage);
           }
         ),
         AppBarMenu(

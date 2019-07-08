@@ -1,15 +1,14 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-25 11:55:35
- * @LastEditTime: 2019-07-05 17:46:20
+ * @LastEditTime: 2019-07-08 18:19:21
  */
 
 import 'package:flutter/material.dart';
 import 'package:app/components/novel_item_column.dart';
 import 'package:app/components/loading.dart';
-import 'package:app/pages/bookdetail/bookdetail_page.dart';
 import 'package:app/services/mock.dart';
-
+import 'package:app/routers.dart';
 
 class BookShelfList extends StatefulWidget {
   @override
@@ -28,6 +27,9 @@ class _BookShelfListState extends State<BookShelfList> {
 
   loadData() async {
     List res = await MockData.getBookshelfList();
+    if(!mounted) {
+      return;
+    }
     setState(() {
       _novelData = res;
     });
@@ -56,9 +58,7 @@ class _BookShelfListState extends State<BookShelfList> {
     if(index < _novelData.length) {
       return InkWell(
         onTap: () {
-          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context){
-            return BookDetailPage();
-          }));
+          Router.push(context, Router.bookdetailPage, { 'bookId': _novelData[index]['bookid'] });
         },
         onLongPress: _onLongPress,
         child: NovelItemColumn(

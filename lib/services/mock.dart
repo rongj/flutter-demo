@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-05 16:08:46
- * @LastEditTime: 2019-07-05 17:50:45
+ * @LastEditTime: 2019-07-08 11:04:09
  */
 
 import 'dart:async' show Future;
@@ -16,4 +16,13 @@ class MockData {
       return data;
     });
   }
+
+  static Future getBookweekList() {
+    return Future.delayed(Duration(milliseconds: 200), () async{
+      String res = await rootBundle.loadString('mock/bookweek.json');
+      List data = json.decode(res);
+      return data;
+    });
+  }
+  
 }

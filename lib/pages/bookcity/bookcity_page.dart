@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-24 15:26:27
- * @LastEditTime: 2019-07-02 09:36:01
+ * @LastEditTime: 2019-07-08 13:46:03
  */
 
 
@@ -12,6 +12,8 @@ import 'bookcity_week.dart';
 import 'bookcity_quality.dart';
 import 'bookcity_guess.dart';
 import 'bookcity_hot.dart';
+import 'package:app/services/api.dart';
+// import 'package:app/services/mock.dart';
 
 class BookCityPage extends StatefulWidget {
   @override
@@ -23,7 +25,12 @@ class _BookCityPageState extends State<BookCityPage> with SingleTickerProviderSt
   TabController _tabController;
   static List<String> _tabs = ['推荐', '男生', '女生', '免费'];
   bool _fixedAppBar = false;
-
+  
+  List _weekDataSource = [];  // 本周热门
+  List _guessDataSource = [];  // 猜你喜欢
+  List _qualityDataSource = [];  // 精品汇聚
+  List _hotDataSource = [];  // 热门推荐
+  
   // 下拉刷新
   Function _pullToRefresh;
 
@@ -41,6 +48,24 @@ class _BookCityPageState extends State<BookCityPage> with SingleTickerProviderSt
       length: _tabs.length,
       vsync: this,
     );
+
+    loadData();
+  }
+
+  loadData() async {
+    if(!mounted) {
+      return;
+    }
+    List _res = await Api.getWeekList();
+    List _res2 = await Api.getGuessList();
+    List _res3 = await Api.getQualityList();
+    List _res4 = await Api.getHotList();
+    setState(() {
+      _weekDataSource = _res;
+      _guessDataSource = _res2;
+      _qualityDataSource = _res3;
+      _hotDataSource = _res4;
+    });
   }
 
   @override
@@ -64,10 +89,10 @@ class _BookCityPageState extends State<BookCityPage> with SingleTickerProviderSt
           child: Column(
             children: <Widget>[
               BookCityNavs(),
-              BookCityWeek(),
-              BookCityGuess(),
-              BookCityQuality(),
-              BookCityHot(),
+              BookCityWeek(dataSource: _weekDataSource),
+              BookCityGuess(dataSource: _guessDataSource),
+              BookCityQuality(dataSource: _qualityDataSource),
+              BookCityHot(dataSource: _hotDataSource),
             ],
           )
         )

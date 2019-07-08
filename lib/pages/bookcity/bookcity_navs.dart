@@ -1,12 +1,11 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-26 11:02:31
- * @LastEditTime: 2019-07-05 14:54:45
+ * @LastEditTime: 2019-07-08 19:51:43
  */
 
 import 'package:flutter/material.dart';
-import '../rank/rank_page.dart';
-import '../category/category_page.dart';
+import 'package:app/routers.dart';
 
 class BookCityNavs extends StatelessWidget {
   final List<Map> _navs = [
@@ -14,28 +13,34 @@ class BookCityNavs extends StatelessWidget {
       'icon': Icons.category,
       'color': Colors.blueAccent,
       'title': '分类',
-      'page': CategoryPage()
+      'page': Router.categoryPage
     },
     {
       'icon': Icons.equalizer,
       'color': Colors.orangeAccent,
       'title': '榜单',
-      'page': RankPage()
+      'page': Router.rankPage
     },
     {
       'icon': Icons.star,
       'color': Colors.redAccent,
       'title': '会员',
+      'page': Router.webviewPage,
+      'webviewParams': {'title': '会员', 'url': 'https://mwx.mop.com/index.html#/',}
     },
     {
       'icon': Icons.book,
       'color': Colors.lightGreen,
       'title': '新书',
+      'page': Router.webviewPage,
+      'webviewParams': {'title': '新书', 'url': 'https://m.qidian.com/finish/male',}
     },
     {
       'icon': Icons.assignment_turned_in,
       'color': Colors.lightBlueAccent,
       'title': '完结',
+      'page': Router.webviewPage,
+      'webviewParams': {'title': '完结', 'url': 'http://www.jianshu.com/p/3754d1370ccc',}
     },
   ];
 
@@ -47,9 +52,7 @@ class BookCityNavs extends StatelessWidget {
 
   _handleNavTap(BuildContext context, item) {
     if(item['page'] != null) {
-      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context){
-        return item['page'];
-      }));
+      Router.push(context, item['page'], item['webviewParams']);
     } else {
       Scaffold.of(context).showSnackBar(_snackBar);
     }

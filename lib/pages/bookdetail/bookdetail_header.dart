@@ -1,10 +1,11 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-25 11:55:35
- * @LastEditTime: 2019-07-04 16:06:42
+ * @LastEditTime: 2019-07-08 10:27:31
  */
 
 import 'package:flutter/material.dart';
+import 'dart:convert' show json;
 
 class BookDetailHeader extends StatelessWidget {
   BookDetailHeader({
@@ -149,7 +150,7 @@ class BookDetailHeader extends StatelessWidget {
                 border: Border.all(color: Color(0xFFE8E8E8), width: 0.5),
                 borderRadius: BorderRadius.circular(2.0),
                 image: DecorationImage(
-                  image: NetworkImage(detail['bookPic']),
+                  image: NetworkImage(json.decode(detail['bookPic'])[0]['url']),
                   fit: BoxFit.fill
                 )
               ),

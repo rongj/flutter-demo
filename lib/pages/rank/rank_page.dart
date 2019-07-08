@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-05 13:57:46
- * @LastEditTime: 2019-07-05 18:29:55
+ * @LastEditTime: 2019-07-08 16:25:44
  */
 
 
@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:app/services/api.dart';
 import 'rank_type.dart';
 import 'rank_source.dart';
+import 'package:app/components/loading.dart';
 
 class RankPage extends StatefulWidget {
   @override
@@ -17,6 +18,7 @@ class RankPage extends StatefulWidget {
 
 class _RankPageState extends State<RankPage> {
   List _dataSource = [];
+  bool _loading = true;
 
   @override
   void initState() {
@@ -25,6 +27,7 @@ class _RankPageState extends State<RankPage> {
   }
   
   _onTypeChange(String type) {
+    setState(() => _loading = true);
     loadData(type);
   }
 
@@ -45,18 +48,23 @@ class _RankPageState extends State<RankPage> {
         break;
       case 'collect':
         var _res = await Api.getRankCollectList();
-        print(_res);
-        res = _res?.data;
+        res = _res['data'];
         break;
       case 'click':
-        // var _res = await Api.getRankClickList();
-        // res = _res?.data?.entityList;
+        var _res = await Api.getRankClickList();
+        res = _res['data']['entityList'];
         break;
     }
-
+    
     setState(() {
+      _loading = false;
       _dataSource = res;
     });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
   
   @override
@@ -73,7 +81,7 @@ class _RankPageState extends State<RankPage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             RankType(onTypeChange: _onTypeChange),
-            Expanded(child: RankSource(dataSource: _dataSource))
+            Expanded(child: _loading ? Loading() : RankSource(dataSource: _dataSource))
           ],
         )
       ),

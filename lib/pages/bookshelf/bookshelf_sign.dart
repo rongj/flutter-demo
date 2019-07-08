@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-25 11:55:35
- * @LastEditTime: 2019-06-25 17:06:43
+ * @LastEditTime: 2019-07-08 18:21:54
  */
 
 import 'package:flutter/material.dart';
@@ -49,9 +49,7 @@ class _BookShelfSignState extends State<BookShelfSign> {
             ),
             child: Text(
               '立即签到',
-              style: TextStyle(
-                color: Colors.white
-              )
+              style: TextStyle(color: Colors.white)
             ),
           )
         ],

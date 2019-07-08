@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-27 17:24:18
- * @LastEditTime: 2019-06-27 17:56:11
+ * @LastEditTime: 2019-07-08 20:00:53
  */
 
 import 'package:flutter/material.dart';
@@ -16,8 +16,6 @@ class PopupMenu extends StatelessWidget {
   final List<Map> menus;
   final Function onTap;
 
-  // _buildPopup
-  
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton<String>(

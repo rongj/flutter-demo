@@ -1,13 +1,15 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-26 11:02:31
- * @LastEditTime: 2019-06-28 14:58:50
+ * @LastEditTime: 2019-07-08 20:00:41
  */
 
+import 'dart:convert' show json;
 import 'package:flutter/material.dart';
 import 'package:app/components/plate_layout.dart';
 import 'package:app/components/novel_item_column.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:app/routers.dart';
 
 class NovelItemsCarousel extends StatefulWidget {
   NovelItemsCarousel({
@@ -17,7 +19,7 @@ class NovelItemsCarousel extends StatefulWidget {
   }): super(key: key);
 
   final String title;
-  final List<Map> dataSource;
+  final List dataSource;
   
   @override
   _NovelItemsCarouselState createState() => _NovelItemsCarouselState();
@@ -53,23 +55,30 @@ class _NovelItemsCarouselState extends State<NovelItemsCarousel> {
       body: Container(
         height: _boxWidth / 3 * 4 + 52.0,
         margin: EdgeInsets.only(top: 15.0),
-        child: Swiper(
+        child: widget.dataSource.length > 0 ? Swiper(
           itemBuilder: (BuildContext context, int index) {
             return Wrap(
               spacing: 20.0,
               runSpacing: 15.0,
               children: List<Widget>.generate(3, (i) {
-                return NovelItemColumn(
-                  title: widget.dataSource[i + index*3]['bookname'],
-                  img: widget.dataSource[i + index*3]['img'],
-                  subtitle: widget.dataSource[i + index*3]['author'],
+                Map _item = widget.dataSource[i + index*3];
+                String _img = _item['imgjs'] != null ? json.decode(_item['imgjs'])[0]['url'] : _item['img'];
+                return InkWell(
+                  onTap: () {
+                    Router.push(context, Router.bookdetailPage, { 'bookId': _item['bookid'] });
+                  },
+                  child: NovelItemColumn(
+                    title: _item['bookname'],
+                    img: _img,
+                    subtitle: _item['author'],
+                  )
                 );
               }),
             );
           },
           itemCount: _swiperNum,
           onIndexChanged: (int index) => _onIndexChanged(index, _swiperNum)
-        ),
+        ) : null,
       )
     );
   }
