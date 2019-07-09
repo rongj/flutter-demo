@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-26 11:02:31
- * @LastEditTime: 2019-07-08 20:00:41
+ * @LastEditTime: 2019-07-09 15:12:30
  */
 
 import 'dart:convert' show json;
@@ -27,12 +27,6 @@ class NovelItemsCarousel extends StatefulWidget {
 
 class _NovelItemsCarouselState extends State<NovelItemsCarousel> {
   int _currentIndex = 0;
-  
-  void _onIndexChanged(int index, int total) {
-    setState(() {
-      _currentIndex = index < total-1 ? _currentIndex + 1 : 0;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,13 +48,14 @@ class _NovelItemsCarouselState extends State<NovelItemsCarousel> {
       ),
       body: Container(
         height: _boxWidth / 3 * 4 + 52.0,
-        margin: EdgeInsets.only(top: 15.0),
+        margin: EdgeInsets.only(top: 15.0, left: 15.0, right: 15.0),
         child: widget.dataSource.length > 0 ? Swiper(
           itemBuilder: (BuildContext context, int index) {
+            int _perNum = index < _swiperNum - 1 ? 3 : widget.dataSource.length-3*index;
             return Wrap(
               spacing: 20.0,
               runSpacing: 15.0,
-              children: List<Widget>.generate(3, (i) {
+              children: List<Widget>.generate(_perNum, (i) {
                 Map _item = widget.dataSource[i + index*3];
                 String _img = _item['imgjs'] != null ? json.decode(_item['imgjs'])[0]['url'] : _item['img'];
                 return InkWell(
@@ -77,7 +72,7 @@ class _NovelItemsCarouselState extends State<NovelItemsCarousel> {
             );
           },
           itemCount: _swiperNum,
-          onIndexChanged: (int index) => _onIndexChanged(index, _swiperNum)
+          onIndexChanged: (int index) => setState(() => _currentIndex = index)
         ) : null,
       )
     );

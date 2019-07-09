@@ -1,12 +1,12 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-20 10:22:02
- * @LastEditTime: 2019-07-08 18:15:37
+ * @LastEditTime: 2019-07-09 20:10:50
  */
 
 import 'package:flutter/material.dart';
 import 'dart:io';
-import 'package:flutter/services.dart';
+// import 'package:flutter/services.dart';
 // import 'package:device_info/device_info.dart';
 import 'pages/container.dart';
 
@@ -34,7 +34,7 @@ class App extends StatelessWidget {
       theme: ThemeData(
         backgroundColor: Color(0xFFFFFFFF),
         primaryColor: Color(0xFF13c4d1),
-        secondaryHeaderColor: Color(0xFFF2F2F2)
+        secondaryHeaderColor: Color(0xFFF2F2F2),
       ),
     );
   }

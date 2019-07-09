@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-03 15:06:03
- * @LastEditTime: 2019-07-04 10:35:25
+ * @LastEditTime: 2019-07-09 20:24:34
  */
 
 import 'package:intl/intl.dart';
@@ -52,6 +52,7 @@ class MyHeader extends StatelessWidget {
       elevation: 0.3,
       expandedHeight: 220.0 + _dragOffset,
       actionsIconTheme: fixed ? null : IconThemeData(color: Colors.white),
+      iconTheme: fixed ? null : IconThemeData(color: Colors.white),
       actions: <Widget>[
         IconButton(
           icon: Icon(IconData(0xe720, fontFamily: 'iconfont')),

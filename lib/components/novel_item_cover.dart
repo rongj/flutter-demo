@@ -1,10 +1,11 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-27 15:16:02
- * @LastEditTime: 2019-07-08 11:50:42
+ * @LastEditTime: 2019-07-09 14:01:49
  */
 
 import 'package:flutter/material.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class NovelItemCover extends StatelessWidget {
   NovelItemCover({
@@ -37,6 +38,11 @@ class NovelItemCover extends StatelessWidget {
               image: NetworkImage(img),
               fit: BoxFit.fill
             )
+          ),
+          child: FadeInImage.assetNetwork(
+            image: img,
+            placeholder: 'assets/images/timg.gif',
+            fit: BoxFit.cover,
           ),
         ),
         showRecommend ? 

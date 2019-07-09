@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-05 15:52:49
- * @LastEditTime: 2019-07-08 11:25:12
+ * @LastEditTime: 2019-07-09 13:47:11
  */
 
 import 'dart:io';
@@ -19,7 +19,7 @@ class HttpRequest {
   static Dio dio = Dio(options);
 
   static Future get(String uri, [Map data]) async {
-    Response res = await dio.get(uri);
+    Response res = await dio.get(uri, queryParameters: data);
     return res.data;
   }
 

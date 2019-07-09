@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-03 16:36:39
- * @LastEditTime: 2019-07-04 11:11:05
+ * @LastEditTime: 2019-07-09 20:13:50
  */
 
 import 'package:flutter/material.dart';
@@ -67,6 +67,7 @@ class MyMenus extends StatelessWidget {
         children: _menus.map((item) {
           return FlatButton(
             onPressed: (){},
+            padding: EdgeInsets.zero,
             color: Colors.white,
             child: Container(
               padding: EdgeInsets.only(left: 15.0),

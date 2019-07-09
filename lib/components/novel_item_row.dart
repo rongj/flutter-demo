@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-26 10:43:04
- * @LastEditTime: 2019-06-27 19:55:53
+ * @LastEditTime: 2019-07-09 11:46:49
  */
 
 import 'package:flutter/material.dart';
@@ -34,7 +34,7 @@ class NovelItemRow extends StatelessWidget {
     double _boxWidth = (MediaQuery.of(context).size.width - 70.0) / 3;
     double _boxHeight = _boxWidth / 3 * 4;
     return Container(
-      margin: EdgeInsets.only(bottom: 20.0),
+      padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -70,7 +70,7 @@ class NovelItemRow extends StatelessWidget {
                         NovelTags(tags: tag),
                         Container(
                           margin: EdgeInsets.only(top: 10.0),
-                          height: 22.0 * 3,
+                          height: 20.0 * 3,
                           child: Text(
                             desc,
                             overflow: TextOverflow.ellipsis,

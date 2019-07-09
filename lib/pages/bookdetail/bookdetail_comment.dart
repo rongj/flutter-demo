@@ -1,13 +1,21 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-04 14:28:38
- * @LastEditTime: 2019-07-05 09:38:11
+ * @LastEditTime: 2019-07-09 15:17:56
  */
 
 import 'package:flutter/material.dart';
 import 'package:app/components/comment_item.dart';
 
 class BookDetailComment extends StatelessWidget {
+  BookDetailComment({
+    Key key,
+    this.replynum,
+    this.dataSource
+  }): super(key: key);
+  final int replynum;
+  final List dataSource;
+  
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -26,7 +34,7 @@ class BookDetailComment extends StatelessWidget {
                     Text('书友评论', style: TextStyle(fontSize: 18.0),),
                     Container(
                       margin: EdgeInsets.only(left: 10.0),
-                      child: Text('共404条评论', style: TextStyle(fontSize: 13.0, color: Colors.black45),),
+                      child: Text(replynum > 0 ? '共$replynum条评论' : '', style: TextStyle(fontSize: 13.0, color: Colors.black45),),
                     )
                   ],
                 ),
@@ -45,22 +53,28 @@ class BookDetailComment extends StatelessWidget {
 
           Container(
             child: Column(
-              children: <Widget>[
-                CommentItem(),
-                CommentItem(),
-                CommentItem(),
-              ],
+              children: dataSource.map((item) {
+                return CommentItem(
+                  username: item['username'],
+                  userpic: item['userpic'],
+                  content: item['content'],
+                  score: item['score'],
+                  datetime: item['cts'],
+                  replynum: item['replynum'],
+                  praisenum: item['praisenum']
+                );
+              }).toList()
             ),
           ),
 
-          Container(
+          dataSource.length > 0 ? Container(
             width: MediaQuery.of(context).size.width - 40.0,
             child: FlatButton(
               onPressed: (){},
               child: Text('查看全部书评', style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 16.0),),
             )
-          )
-        ],
+          ) : Text('暂无评论')
+        ].where((Object o) => o !=null).toList(),
       ),
     );
   }

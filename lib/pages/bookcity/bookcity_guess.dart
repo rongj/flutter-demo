@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-26 11:02:31
- * @LastEditTime: 2019-07-08 19:55:04
+ * @LastEditTime: 2019-07-09 11:32:05
  */
 
 import 'package:flutter/material.dart';
@@ -21,7 +21,7 @@ class BookCityGuess extends StatelessWidget {
       title: '猜你喜欢',
       body: Container(
         height: 96.0,
-        margin: EdgeInsets.only(top: 15.0),
+        margin: EdgeInsets.only(top: 15.0, left: 15.0, right: 15.0),
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: dataSource.length,

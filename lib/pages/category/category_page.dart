@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-05 13:57:46
- * @LastEditTime: 2019-07-05 14:55:31
+ * @LastEditTime: 2019-07-09 11:16:06
  */
 
 import 'package:flutter/material.dart';
@@ -12,64 +12,79 @@ class CategoryPage extends StatelessWidget {
     {
       'text': '都市',
       'type': 'dushi',
+      'code': '1014'
     },
     {
       'text': '武侠',
       'type': 'wuxia',
+      'code': '1012'
     },
     {
       'text': '灵异',
       'type': 'lingyi',
+      'code': '1024'
     },
     {
       'text': '玄幻',
       'type': 'xuanhuan',
+      'code': '1010'
     },
     {
       'text': '科幻',
       'type': 'kehuan',
+      'code': '1022'
     },
     {
       'text': '历史',
       'type': 'lishi',
+      'code': '1018'
     },
     {
       'text': '悬疑',
       'type': 'xuanyi',
+      'code': '1026'
     },
     {
       'text': '同人',
       'type': 'tongren',
+      'code': '1028'
     },
     {
       'text': '竞技',
       'type': 'jingji',
+      'code': '1020'
     },
     {
       'text': '军事',
       'type': 'junshi',
+      'code': '1016'
     },
   ];
   final List _categoryWoman = const [
     {
       'text': '言情',
       'type': 'yanqing',
+      'code': '1015'
     },
     {
       'text': '历史',
       'type': 'lishi',
+      'code': '1018'
     },
     {
       'text': '灵异',
       'type': 'lingyi',
+      'code': '1024'
     },
     {
       'text': '玄幻',
       'type': 'xuanhuan',
+      'code': '1011'
     },
     {
       'text': '悬疑',
       'type': 'xuanyi',
+      'code': '1027'
     },
   ];
 
@@ -80,7 +95,7 @@ class CategoryPage extends StatelessWidget {
           Router.push(context, Router.categoryDetailPage, {
             'title': item['text'],
             'gender': gender,
-            'type': item['type'],
+            'type': item['code'],
           });
         },
         child: Container(

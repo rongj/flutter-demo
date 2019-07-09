@@ -1,13 +1,13 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-24 15:26:27
- * @LastEditTime: 2019-06-28 15:32:11
+ * @LastEditTime: 2019-07-09 20:24:11
  */
 
-
 import 'package:flutter/material.dart';
-import './selected_man.dart';
-import './selected_woman.dart';
+import 'selected_list.dart';
+import 'package:app/components/loading.dart';
+import 'package:app/services/api.dart';
 
 class SelectedPage extends StatefulWidget {
   @override
@@ -17,14 +17,25 @@ class SelectedPage extends StatefulWidget {
 class _SelectedPageState extends State<SelectedPage> with SingleTickerProviderStateMixin {
   ScrollController _controller;
   TabController _tabController;
-  static List<String> _tabs = ['男生', '女生'];
+  List<Map> _tabs = [
+    {
+      'text': '男生',
+      'value': 'man'
+    },
+    {
+      'text': '女生',
+      'value': 'woman'
+    },
+  ];
 
-  // bool _hideTabBar = false;
-  // String _currentTabText = _tabs[0];
+  String _currentGender = 'man';
+  List _manList = [];
+  List _womanList = [];
 
   @override
   void initState() {
     super.initState();
+    loadData();
     _controller = ScrollController()..addListener(() {
       // setState(() {
       //   _hideTabBar = _controller.offset > 300;
@@ -36,9 +47,23 @@ class _SelectedPageState extends State<SelectedPage> with SingleTickerProviderSt
       vsync: this,
     )..addListener(() {
       setState(() {
-        // _currentTabText = _tabs[_tabController.index];
+        _currentGender = _tabs[_tabController.index]['value'];
       });
+      loadData();
     });
+  }
+
+  loadData() async {
+    var _res = await Api.getChannelBookList({ 'gender': _currentGender });
+    if(_currentGender == 'man') {
+      setState(() {
+        _manList = _res['data'];
+      });
+    } else if(_currentGender == 'woman') {
+      setState(() {
+        _womanList = _res['data'];
+      });
+    }
   }
 
   @override
@@ -50,11 +75,12 @@ class _SelectedPageState extends State<SelectedPage> with SingleTickerProviderSt
 
   // 下拉刷新
   Future _pullToRefresh() async {
-
+    loadData();
   }
   
   @override
   Widget build(BuildContext context) {
+    bool _isEmptyList = (_currentGender == 'man' && _manList.length == 0) || (_currentGender == 'woman' && _womanList.length == 0);
     return Scaffold(
       appBar: AppBar(
         title: Text('精选'),
@@ -74,23 +100,22 @@ class _SelectedPageState extends State<SelectedPage> with SingleTickerProviderSt
               unselectedLabelColor: Colors.black87,
               indicatorSize: TabBarIndicatorSize.label,
               indicator: UnderlineTabIndicator(
-                // strokeCap: StrokeCap.round,
                 insets: EdgeInsets.symmetric(horizontal: 8.0),
                 borderSide: BorderSide(width: 2.0, color: Theme.of(context).primaryColor)
               ),
-              tabs: _tabs.map((tab) => Tab(text: tab,)).toList(),
+              tabs: _tabs.map((tab) => Tab(text: tab['text'],)).toList(),
             )
           ),
         ),
       ),
-      body: TabBarView(
+      body: _isEmptyList ? Loading() : TabBarView(
         controller: _tabController,
         children: _tabs.map((tab) => RefreshIndicator(
             onRefresh: _pullToRefresh,
             child: ListView(
               controller: _controller,
               children: <Widget>[
-                tab == '男生' ? SelectedMan() : SelectedWoman(),
+                SelectedList(dataSource: tab['value'] == 'man' ? _manList : _womanList,)
               ],
             ),
           )

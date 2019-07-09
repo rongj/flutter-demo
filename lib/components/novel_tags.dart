@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-27 13:57:56
- * @LastEditTime: 2019-07-04 16:40:28
+ * @LastEditTime: 2019-07-09 13:41:12
  */
 
 import 'package:flutter/material.dart';
@@ -28,13 +28,13 @@ class NovelTags extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<String> _tagsList = tags.split(',').where((o) => o.isNotEmpty).toList();
-    return Row(
+    return Wrap(
       children: List<Widget>.generate(_tagsList.length, (index){
         return Container(
           padding: EdgeInsets.symmetric(vertical: 2.0, horizontal: 8.0),
           margin: EdgeInsets.only(right: 5.0, top: 5.0),
           decoration: BoxDecoration(
-            border: Border.all(color: colourful ? _tagsColor[index] : Colors.transparent, width: 0.5),
+            border: Border.all(color: colourful ? _tagsColor[index%_tagsColor.length] : Colors.transparent, width: 0.5),
             borderRadius: BorderRadius.circular(10.0),
             color: colourful ? Colors.white : Color(0xFFe8e8e8)
           ),
@@ -42,7 +42,7 @@ class NovelTags extends StatelessWidget {
             _tagsList[index],
             style: TextStyle(
               fontSize: 12.0,
-              color: colourful ? _tagsColor[index] : Colors.black87,
+              color: colourful ? _tagsColor[index%_tagsColor.length] : Colors.black87,
             ),
           ),
         );

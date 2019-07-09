@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-04 14:17:19
- * @LastEditTime: 2019-07-08 10:59:08
+ * @LastEditTime: 2019-07-09 17:10:19
  */
 
 import 'package:flutter/material.dart';
@@ -13,6 +13,7 @@ import 'bookdetail_relevant.dart';
 import 'bookdetail_bottom.dart';
 import 'package:app/components/loading.dart';
 import 'package:app/services/api.dart';
+import 'package:app/widgets/bottom_share.dart';
 
 class BookDetailPage extends StatefulWidget {
   BookDetailPage({
@@ -31,12 +32,13 @@ class _BookDetailPageState extends State<BookDetailPage> {
   bool _loading = true;
   Map _detail;
   String _detailMsg = '';
+  List _commentList = [];
+  List _relList = [];
 
   @override
   void initState() {
     super.initState();
     print(widget.bookId);
-    print(_detail == null);
     loadData();
     _controller = ScrollController();
     _controller.addListener(() {
@@ -54,10 +56,14 @@ class _BookDetailPageState extends State<BookDetailPage> {
 
   loadData() async {
     var _res = await Api.getBookDetail({ 'bookId': widget.bookId });
+    var _res2 = await Api.getCommentList({ 'bookId': widget.bookId, 'pageSize': 3 });
+    var _res3 = await Api.getRelList({ 'bookId': widget.bookId });
     setState(() {
       _loading = false;
       _detail = _res['data'];
       _detailMsg = _res['msg'];
+      _commentList = _res2['data']['entityList'];
+      _relList = _res3['data'];
     });
   }
   
@@ -75,7 +81,7 @@ class _BookDetailPageState extends State<BookDetailPage> {
         iconTheme: IconThemeData(color: _fixedAppBar ? null : Colors.white),
         actions: _detail != null ? <Widget>[
           IconButton(
-            onPressed: (){},
+            onPressed: () => BottomShare.showShareSheet(context),
             tooltip: '分享',
             icon: Icon(IconData(0xe739, fontFamily: 'iconfont')),
           )
@@ -88,8 +94,8 @@ class _BookDetailPageState extends State<BookDetailPage> {
             BookDetailHeader(detail: _detail),
             BookDetailInfo(detail: _detail),
             BookDetailLinks(detail: _detail),
-            BookDetailComment(),
-            BookDetailRelevant()
+            BookDetailComment(replynum: _detail['replynum'], dataSource: _commentList,),
+            BookDetailRelevant(dataSource: _relList)
           ],
         ) : Center(
           child: _loading ? Loading() : Text(_detailMsg),

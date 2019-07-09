@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-05 15:52:49
- * @LastEditTime: 2019-07-08 15:27:28
+ * @LastEditTime: 2019-07-09 14:06:11
  */
 
 import '../utils/http_request.dart';
@@ -45,4 +45,16 @@ class Api {
 
   // 目录
   static getBookCatalog(data) => HttpRequest.post('http://novelapi.mop.com/book/chapter/v1/list', data);
+
+  // 评论
+  static getCommentList(data) => HttpRequest.get('http://novelapi.mop.com/comment/v1/web/list', data);
+
+  // 详情推荐
+  static getRelList(data) => HttpRequest.get('http://novelapi.mop.com/book/v1/guessYouLike', data);
+
+  // 分类列表
+  static getCategoryBookList(data) => HttpRequest.post('http://novelapi.mop.com/book/v2/categoryList', data);
+
+  // 精选
+  static getChannelBookList(data) => HttpRequest.get('http://novelapi.mop.com/book/v1/channelBooks', data);
 }

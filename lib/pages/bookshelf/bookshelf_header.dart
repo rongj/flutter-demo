@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-25 11:55:35
- * @LastEditTime: 2019-07-08 19:57:07
+ * @LastEditTime: 2019-07-09 20:22:48
  */
 
 import 'package:flutter/material.dart';
@@ -74,6 +74,7 @@ class _BookShelfHeaderState extends State<BookShelfHeader> {
       centerTitle: true,
       backgroundColor: widget.fixed ? Colors.white : Colors.transparent,
       actionsIconTheme: widget.fixed ? null : IconThemeData(color: Colors.white),
+      iconTheme: widget.fixed ? null : IconThemeData(color: Colors.white),
       elevation: 0.3,
       actions: <Widget>[
         IconButton(

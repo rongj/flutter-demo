@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-24 15:13:38
- * @LastEditTime: 2019-07-08 19:45:22
+ * @LastEditTime: 2019-07-09 17:47:54
  */
 
 import 'package:flutter/material.dart';
@@ -50,5 +50,7 @@ class Router {
     }));
   }
   
-  
+  static pop(BuildContext context) {
+    Navigator.pop(context);
+  }
 }

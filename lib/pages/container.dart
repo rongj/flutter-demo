@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-24 15:06:35
- * @LastEditTime: 2019-06-27 19:50:13
+ * @LastEditTime: 2019-07-09 20:10:27
  */
 
 import 'package:flutter/material.dart';
@@ -9,9 +9,12 @@ import 'package:app/pages/bookshelf/bookshelf_page.dart';
 import 'package:app/pages/bookcity/bookcity_page.dart';
 import 'package:app/pages/selected/selected_page.dart';
 import 'package:app/pages/my/my_page.dart';
+import 'package:app/components/left_drawer.dart';
 
 class ContainerPage extends StatefulWidget {
-  ContainerPage({Key key}) : super(key: key);
+  ContainerPage({
+    Key key
+  }): super(key: key);
 
   @override
   _ContainerPageState createState() => _ContainerPageState();
@@ -38,6 +41,7 @@ class _ContainerPageState extends State<ContainerPage> {
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
+      drawer: LeftDrawer(),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
