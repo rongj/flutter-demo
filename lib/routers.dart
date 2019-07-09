@@ -10,6 +10,7 @@ import 'package:app/pages/bookdetail/bookdetail_page.dart';
 import 'package:app/pages/rank/rank_page.dart';
 import 'package:app/pages/catalog/catalog_page.dart';
 import 'package:app/pages/category/category_page.dart';
+import 'package:app/pages/categorydetail/category_detail_page.dart';
 import 'package:app/pages/webview/webview_page.dart';
 import 'package:app/pages/error/notfound_page.dart';
 
@@ -19,6 +20,7 @@ class Router {
   static const rankPage = 'rank';
   static const catalogPage = 'catalog';
   static const categoryPage = 'category';
+  static const categoryDetailPage = 'categoryDetail';
   static const webviewPage = 'webview';
 
   static Widget _buildPage(String name, Map params) {
@@ -33,6 +35,8 @@ class Router {
         return CatalogPage(bookId: params['bookId']);
       case categoryPage:
         return CategoryPage();
+      case categoryDetailPage:
+        return CategoryDetailPage(title: params['title'], gender: params['gender'], type: params['type'],);
       case webviewPage:
         return WebviewPage(title: params['title'], url: params['url'],); 
       default:

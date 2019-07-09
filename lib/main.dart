@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:flutter/services.dart';
 // import 'package:device_info/device_info.dart';
-import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'pages/container.dart';
 
 void main() async {
@@ -33,7 +32,7 @@ class App extends StatelessWidget {
       title: 'Flutter Demo',
       home: ContainerPage(),
       theme: ThemeData(
-        backgroundColor: Color(0xFFFEFEFE),
+        backgroundColor: Color(0xFFFFFFFF),
         primaryColor: Color(0xFF13c4d1),
         secondaryHeaderColor: Color(0xFFF2F2F2)
       ),
