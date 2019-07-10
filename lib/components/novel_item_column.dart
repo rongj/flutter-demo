@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-26 10:43:04
- * @LastEditTime: 2019-07-08 11:48:06
+ * @LastEditTime: 2019-07-10 09:42:41
  */
 
 import 'package:flutter/material.dart';
@@ -16,6 +16,7 @@ class NovelItemColumn extends StatelessWidget {
     this.subtitle = '',
     this.showAdd = false,
     this.ableCheck = false,
+    this.checked,
   }): super(key: key) {
     titleMaxLines = subtitle.isNotEmpty ? 1 : 2;
   }
@@ -26,6 +27,7 @@ class NovelItemColumn extends StatelessWidget {
   final String subtitle;
   final bool showAdd;
   final bool ableCheck;
+  final bool checked;
   int titleMaxLines = 2;
   bool notNull(Object o) => o != null;
   
@@ -56,7 +58,8 @@ class NovelItemColumn extends StatelessWidget {
             height: _boxHeight,
             img: img,
             showRecommend: showRecommend,
-            ableCheck: ableCheck
+            ableCheck: ableCheck,
+            checked: checked,
           ),
           Container(
             margin: EdgeInsets.only(top: 5.0),

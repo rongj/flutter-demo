@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-26 17:07:18
- * @LastEditTime: 2019-07-09 11:29:41
+ * @LastEditTime: 2019-07-10 17:37:48
  */
 
 import 'package:flutter/material.dart';
@@ -25,6 +25,7 @@ class PlateLayout extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 15.0),
       color: Colors.white,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Container(
             padding: EdgeInsets.symmetric(horizontal: 15.0),

@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-26 11:02:31
- * @LastEditTime: 2019-07-08 19:56:20
+ * @LastEditTime: 2019-07-10 17:38:44
  */
 
 import 'dart:convert' show json;
@@ -64,7 +64,7 @@ class _BookCityQualityState extends State<BookCityQuality> {
         )
       ),
       body: Container(
-        margin: EdgeInsets.only(top: 15.0),
+        margin: EdgeInsets.only(top: 15.0, left: 15.0),
         child: Wrap(
           spacing: 20.0,
           runSpacing: 15.0,

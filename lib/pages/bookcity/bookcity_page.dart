@@ -1,9 +1,8 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-24 15:26:27
- * @LastEditTime: 2019-07-08 13:46:03
+ * @LastEditTime: 2019-07-10 15:32:29
  */
-
 
 import 'package:flutter/material.dart';
 import 'bookcity_header.dart';
@@ -36,35 +35,32 @@ class _BookCityPageState extends State<BookCityPage> with SingleTickerProviderSt
   @override
   void initState() {
     super.initState();
+    loadData();
     _controller = ScrollController()..addListener(() {
       setState(() {
         _fixedAppBar = _controller.position.pixels > 130;
       });
       _pullToRefresh(_controller.position.pixels);
     });
-
     _tabController = TabController(
       length: _tabs.length,
       vsync: this,
     );
-
-    loadData();
   }
 
   loadData() async {
-    if(!mounted) {
-      return;
-    }
     List _res = await Api.getWeekList();
     List _res2 = await Api.getGuessList();
     List _res3 = await Api.getQualityList();
     List _res4 = await Api.getHotList();
-    setState(() {
-      _weekDataSource = _res;
-      _guessDataSource = _res2;
-      _qualityDataSource = _res3;
-      _hotDataSource = _res4;
-    });
+    if(mounted) {
+      setState(() {
+        _weekDataSource = _res;
+        _guessDataSource = _res2;
+        _qualityDataSource = _res3;
+        _hotDataSource = _res4;
+      });
+    }
   }
 
   @override

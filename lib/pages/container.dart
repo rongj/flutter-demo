@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-24 15:06:35
- * @LastEditTime: 2019-07-09 20:10:27
+ * @LastEditTime: 2019-07-10 11:00:30
  */
 
 import 'package:flutter/material.dart';
@@ -12,24 +12,24 @@ import 'package:app/pages/my/my_page.dart';
 import 'package:app/components/left_drawer.dart';
 
 class ContainerPage extends StatefulWidget {
-  // ContainerPage({
-  //   Key key,
-  //   this.currentIndex,
-  // }): super(key: key);
-  // final int currentIndex;
+  ContainerPage({
+    Key key,
+    this.currentIndex = 0,
+  }): super(key: key);
+  final int currentIndex;
 
   @override
   _ContainerPageState createState() => _ContainerPageState();
 }
 
 class _ContainerPageState extends State<ContainerPage> {
-  int _selectedIndex = 1;
+  int _selectedIndex;
   Widget _bottomToolbar;
 
   @override
   void initState() {
     super.initState();
-    // _selectedIndex = widget.currentIndex;
+    _selectedIndex = widget.currentIndex;
   }
 
   _onCheckChange(bool showCheck, [Widget bottomToolbar]) {

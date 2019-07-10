@@ -2,6 +2,7 @@
   {
     "bookname": "法医狂妃",
     "author": "谁家mm",
+    "recommend": "1",
     "img": "http://images01.mopimg.cn/imgs/20181027/20181027_6a449c2a8aa7ac3eba3328ef3ec2bfa5_3_4_200.jpg",
     "url": "http://wx.mop.com/book/181027135412762131928.html",
     "bookid": "1540619652762131928"
@@ -9,6 +10,7 @@
   {
     "bookname": "九阳天尊",
     "author": "冰魂",
+    "recommend": "1",
     "img": "http://images01.mopimg.cn/imgs/20180908/20180908_cba83311403553830ad9618e3bc73cd0_3_4_200.jpg",
     "url": "http://wx.mop.com/book/180908071944561186889.html",
     "bookid": "1536362384561186889"
@@ -37,6 +39,7 @@
   {
     "bookname": "天庭微博红包群",
     "author": "布凡",
+    "recommend": "1",
     "img": "http://images01.mopimg.cn/imgs/20181027/20181027_df3834d2766738c3f0ad081702244987_3_4_200.jpg",
     "url": "http://wx.mop.com/book/181027123844559796814.html",
     "bookid": "1540615124559796814"
@@ -47,5 +50,48 @@
     "img": "http://images01.mopimg.cn/imgs/20181025/20181025_38f31fa5151900988e828181a15f3397_3_4_200.jpg",
     "url": "http://wx.mop.com/book/181025115426188669247.html",
     "bookid": "1540439666188669247"
+  },
+  {
+    "bookname": "极品村医",
+    "author": "大地恩情",
+    "img": "http://images01.mopimg.cn/imgs/20180308/20180308_a82ce04707d1d8f9db739e3b14cf04c7_3_4_200.jpg",
+    "url": "http://wx.mop.com/book/180308184900178144957.html",
+    "bookid": "1520506140178144957"
+  },
+  {
+    "bookname": "闪婚甜妻：高冷老公晚上约",
+    "author": "筱筱风",
+    "img": "http://images01.mopimg.cn/imgs/20190107/20190107_699eabb5bb125b65ba5955f46e043ead_3_4_200.jpg",
+    "url": "http://wx.mop.com/book/190107151342741241457.html",
+    "bookid": "1546845222741241457"
+  },
+  {
+    "bookname": "都市最强战医",
+    "author": "人生几渡",
+    "recommend": "1",
+    "img": "http://images01.mopimg.cn/imgs/20180208/20180208_5cf9f250aa3b07cf981862f896c431db_3_4_200.jpg",
+    "url": "http://wx.mop.com/book/180208180528906528677.html",
+    "bookid": "1518084328906528677"
+  },
+  {
+    "bookname": "皇后万万岁",
+    "author": "浮生如梦",
+    "img": "http://images01.mopimg.cn/imgs/20180529/20180529_66d09d51b62c01e368bbd73bb7860d80_3_4_200.jpg",
+    "url": "http://wx.mop.com/book/180529125210554934259.html",
+    "bookid": "1527569530554934259"
+  },
+  {
+    "bookname": "蚀心总裁：爱有千千劫",
+    "author": "琴公子",
+    "img": "http://images01.mopimg.cn/imgs/20180308/20180308_225b73c5282fb0781610ed1145544145_3_4_200.jpg",
+    "url": "http://wx.mop.com/book/180308174010259402931.html",
+    "bookid": "1520502010259402931"
+  },
+  {
+    "bookname": "九焰至尊",
+    "author": "爱吃白菜",
+    "img": "http://images01.mopimg.cn/imgs/20180208/20180208_d7e43b3280e2cf232e7f56485d904d98_3_4_200.jpg",
+    "url": "http://wx.mop.com/book/180208165322106579835.html",
+    "bookid": "1518080002106579835"
   }
 ]

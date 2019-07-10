@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-26 11:02:31
- * @LastEditTime: 2019-07-08 19:51:43
+ * @LastEditTime: 2019-07-10 12:46:41
  */
 
 import 'package:flutter/material.dart';
@@ -10,33 +10,31 @@ import 'package:app/routers.dart';
 class BookCityNavs extends StatelessWidget {
   final List<Map> _navs = [
     {
-      'icon': Icons.category,
+      'icon': IconData(0xe7f8, fontFamily: 'iconfont'),
       'color': Colors.blueAccent,
       'title': '分类',
       'page': Router.categoryPage
     },
     {
-      'icon': Icons.equalizer,
+      'icon': IconData(0xe6c5, fontFamily: 'iconfont'),
       'color': Colors.orangeAccent,
       'title': '榜单',
       'page': Router.rankPage
     },
     {
-      'icon': Icons.star,
+      'icon': IconData(0xe654, fontFamily: 'iconfont'),
       'color': Colors.redAccent,
       'title': '会员',
-      'page': Router.webviewPage,
-      'webviewParams': {'title': '会员', 'url': 'https://mwx.mop.com/index.html#/',}
     },
     {
-      'icon': Icons.book,
+      'icon': IconData(0xe88a, fontFamily: 'iconfont'),
       'color': Colors.lightGreen,
       'title': '新书',
       'page': Router.webviewPage,
       'webviewParams': {'title': '新书', 'url': 'https://m.qidian.com/finish/male',}
     },
     {
-      'icon': Icons.assignment_turned_in,
+      'icon': IconData(0xe644, fontFamily: 'iconfont'),
       'color': Colors.lightBlueAccent,
       'title': '完结',
       'page': Router.webviewPage,
@@ -79,7 +77,7 @@ class BookCityNavs extends StatelessWidget {
                       child: Icon(
                         f['icon'],
                         color: Colors.white,
-                        size: 30.0,
+                        size: 28.0,
                       ),
                     ),
                   ),
