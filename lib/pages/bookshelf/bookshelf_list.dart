@@ -7,66 +7,53 @@
 import 'package:flutter/material.dart';
 import 'package:app/components/novel_item_column.dart';
 import 'package:app/components/loading.dart';
-import 'package:app/services/mock.dart';
 import 'package:app/routers.dart';
 
-class BookShelfList extends StatefulWidget {
-  @override
-  _BookShelfListState createState() => _BookShelfListState();
-}
+class BookShelfList extends StatelessWidget {
+  BookShelfList({
+    Key key,
+    this.dataSource,
+    this.showCheck,
+    this.onLongPress,
+    this.checkedKeys,
+    this.onCheck
+  }): super(key: key);
 
-class _BookShelfListState extends State<BookShelfList> {
-  List _novelData = [];
-  bool showCheck = false;
-
-  @override
-  void initState() {
-    super.initState();
-    loadData();
-  }
-
-  loadData() async {
-    List res = await MockData.getBookshelfList();
-    if(!mounted) {
-      return;
-    }
-    setState(() {
-      _novelData = res;
-    });
-  }
-
-  // 长按多选
-  _onLongPress() {
-    this.setState(() {
-      showCheck = true;
-    });
-  }
+  final List dataSource;
+  final bool showCheck;
+  final Function onLongPress;
+  final List checkedKeys;
+  final Function onCheck;
   
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(bottom: 20.0, left: 15.0, right: 15.0),
-      child: _novelData.length > 0 ? Wrap(
+      child: dataSource.length > 0 ? Wrap(
         spacing: 20.0,
         runSpacing: 15.0,
-        children: _bookList(),
+        children: _bookList(context),
       ) : Loading()
     );
   }
 
-  List<Widget> _bookList() => List.generate(_novelData.length + 1, (index) {
-    if(index < _novelData.length) {
+  List<Widget> _bookList(BuildContext context) => List.generate(dataSource.length + 1, (index) {
+    if(index < dataSource.length) {
+      Map _item = dataSource[index];
       return InkWell(
         onTap: () {
-          Router.push(context, Router.bookdetailPage, { 'bookId': _novelData[index]['bookid'] });
+          if(!showCheck) {
+            Router.push(context, Router.bookdetailPage, { 'bookId': _item['bookid'] });
+          } else {
+            onCheck(_item['bookid']);
+          }
         },
-        onLongPress: _onLongPress,
+        onLongPress: onLongPress,
         child: NovelItemColumn(
-          title: _novelData[index]['bookname'],
-          img: _novelData[index]['img'],
-          // subtitle: _novelData[index]['author'],
+          title: _item['bookname'],
+          img: _item['img'],
           showRecommend: index < 3,
-          ableCheck: showCheck && index >= 3
+          ableCheck: showCheck && checkedKeys.contains(_item['bookid'])
         ),
       );
     } else {

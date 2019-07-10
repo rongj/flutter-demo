@@ -13,7 +13,6 @@ import 'bookcity_quality.dart';
 import 'bookcity_guess.dart';
 import 'bookcity_hot.dart';
 import 'package:app/services/api.dart';
-// import 'package:app/services/mock.dart';
 
 class BookCityPage extends StatefulWidget {
   @override

@@ -48,12 +48,6 @@ class _BookDetailPageState extends State<BookDetailPage> {
     });
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-    _controller.dispose();
-  }
-
   loadData() async {
     var _res = await Api.getBookDetail({ 'bookId': widget.bookId });
     var _res2 = await Api.getCommentList({ 'bookId': widget.bookId, 'pageSize': 3 });
@@ -66,7 +60,13 @@ class _BookDetailPageState extends State<BookDetailPage> {
       _relList = _res3['data'];
     });
   }
-  
+
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

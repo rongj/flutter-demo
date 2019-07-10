@@ -12,22 +12,31 @@ import 'package:app/pages/my/my_page.dart';
 import 'package:app/components/left_drawer.dart';
 
 class ContainerPage extends StatefulWidget {
-  ContainerPage({
-    Key key
-  }): super(key: key);
+  // ContainerPage({
+  //   Key key,
+  //   this.currentIndex,
+  // }): super(key: key);
+  // final int currentIndex;
 
   @override
   _ContainerPageState createState() => _ContainerPageState();
 }
 
 class _ContainerPageState extends State<ContainerPage> {
-  int _selectedIndex = 0;
-  static List<Widget> _widgetOptions = <Widget>[
-    BookShelfPage(),
-    BookCityPage(),
-    SelectedPage(),
-    MyPage(),
-  ];
+  int _selectedIndex = 1;
+  Widget _bottomToolbar;
+
+  @override
+  void initState() {
+    super.initState();
+    // _selectedIndex = widget.currentIndex;
+  }
+
+  _onCheckChange(bool showCheck, [Widget bottomToolbar]) {
+    setState(() {
+      _bottomToolbar = showCheck ? bottomToolbar : null;
+    });
+  }
 
   void _onItemTapped(int index) {
     setState(() {
@@ -37,12 +46,18 @@ class _ContainerPageState extends State<ContainerPage> {
 
   @override
   Widget build(BuildContext context) {
+    final List<Widget> _widgetOptions = <Widget>[
+      BookShelfPage(onCheckChange: _onCheckChange,),
+      BookCityPage(),
+      SelectedPage(),
+      MyPage(),
+    ];
     return Scaffold(
+      drawer: LeftDrawer(),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
-      drawer: LeftDrawer(),
-      bottomNavigationBar: BottomNavigationBar(
+      bottomNavigationBar: _bottomToolbar != null ? _bottomToolbar : BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(IconData(0xe65a, fontFamily: 'iconfont')),

@@ -11,9 +11,13 @@ import 'package:app/routers.dart';
 class BookShelfHeader extends StatefulWidget {
   BookShelfHeader({
     Key key,
-    this.fixed
+    this.fixed,
+    this.showCheck,
+    this.onCheckCancel,
   }): super(key: key);
   final bool fixed;
+  final bool showCheck;
+  final Function onCheckCancel;
   
   @override
   _BookShelfHeaderState createState() => _BookShelfHeaderState();
@@ -76,7 +80,12 @@ class _BookShelfHeaderState extends State<BookShelfHeader> {
       actionsIconTheme: widget.fixed ? null : IconThemeData(color: Colors.white),
       iconTheme: widget.fixed ? null : IconThemeData(color: Colors.white),
       elevation: 0.3,
-      actions: <Widget>[
+      actions: widget.showCheck ? <Widget>[
+        FlatButton(
+          onPressed: () => widget.onCheckCancel(),
+          child: Text('取消', style: TextStyle(color: widget.fixed ? null : Colors.white),),
+        )
+      ] : <Widget>[
         IconButton(
           icon: Icon(Icons.search),
           tooltip: '搜索',
