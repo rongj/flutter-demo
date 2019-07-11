@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-24 15:13:38
- * @LastEditTime: 2019-07-10 16:44:05
+ * @LastEditTime: 2019-07-11 18:17:07
  */
 
 import 'package:flutter/material.dart';
@@ -16,16 +16,25 @@ import 'package:app/pages/webview/webview_page.dart';
 import 'package:app/pages/error/notfound_page.dart';
 
 /* test-page */
-import 'package:app/pages/test/calendar/calendar_page.dart';
-import 'package:app/pages/test/chart/chart_page.dart';
-import 'package:app/pages/test/deviceinfo/deviceinfo_page.dart';
-import 'package:app/pages/test/imagepreview/imagepreview_page.dart';
-import 'package:app/pages/test/map/map_page.dart';
-import 'package:app/pages/test/permission/permission_page.dart';
-import 'package:app/pages/test/route/route_page.dart';
-import 'package:app/pages/test/scan/scan_page.dart';
-import 'package:app/pages/test/theme/theme_page.dart';
-import 'package:app/pages/test/video/video_page.dart';
+import 'package:app/pages/demo/calendar/calendar_page.dart';
+import 'package:app/pages/demo/chart/chart_page.dart';
+import 'package:app/pages/demo/deviceinfo/deviceinfo_page.dart';
+import 'package:app/pages/demo/imagepreview/imagepreview_page.dart';
+import 'package:app/pages/demo/map/map_page.dart';
+import 'package:app/pages/demo/permission/permission_page.dart';
+import 'package:app/pages/demo/route/route_page.dart';
+import 'package:app/pages/demo/scan/scan_page.dart';
+import 'package:app/pages/demo/theme/theme_page.dart';
+import 'package:app/pages/demo/video/video_page.dart';
+
+/* test-state-page */
+import 'package:app/pages/demo/state/state_page.dart';
+import 'package:app/pages/demo/state/bloc/bloc_page.dart';
+import 'package:app/pages/demo/state/blocglobal/bloc_global_page.dart';
+import 'package:app/pages/demo/state/eventbus/eventbus_page.dart';
+import 'package:app/pages/demo/state/redux/redux_page.dart';
+import 'package:app/pages/demo/state/rxdart/rxdart_page.dart';
+import 'package:app/pages/demo/state/scoped_model/scoped_model_page.dart';
 
 class Router {
   static const searchPage = 'search';
@@ -47,6 +56,16 @@ class Router {
   static const scanPage = 'scan';
   static const themePage = 'theme';
   static const videoPage = 'video';
+
+  /* test-state-page */
+  static const statePage = 'state';
+  static const scopedmodelPage = 'scopedmodel';
+  static const reduxPage = 'redux';
+  static const blocPage = 'bloc';
+  static const blocglobalPage = 'blocglobal';
+  static const rxdartPage = 'rxdart';
+  static const eventbusPage = 'eventbus';
+
 
   static Widget _buildPage(String name, Map params) {
     switch(name) {
@@ -86,7 +105,23 @@ class Router {
         return ThemePage();
       case videoPage:
         return VideoPage();
-        
+      
+      /* test-state-page */
+      case statePage:
+        return StatePage();
+      case blocPage:
+        return BlocPage();
+      case blocglobalPage:
+        return BlocGlobalPage();
+      case eventbusPage:
+        return EventBusPage();
+      case reduxPage:
+        return ReduxPage();
+      case rxdartPage:
+        return RxDartPage();
+      case scopedmodelPage:
+        return ScopedModelPage();
+      
       default:
         return NotFoundPage();
     }

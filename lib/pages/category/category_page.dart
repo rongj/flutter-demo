@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-05 13:57:46
- * @LastEditTime: 2019-07-09 11:16:06
+ * @LastEditTime: 2019-07-11 09:41:58
  */
 
 import 'package:flutter/material.dart';
@@ -133,20 +133,15 @@ class CategoryPage extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
                 color: Color(0xFFf1f1f1),
                 child: Text('男生频道', style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 16.0),),
-              ),
-              Column(
-                children: buildCategoryList(context, _categoryMan, 'man'),
-              ),
-              Container(
-                alignment: Alignment.centerLeft,
-                padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-                color: Color(0xFFf1f1f1),
-                child: Text('女生频道', style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 16.0),),
-              ),
-              Column(
-                children: buildCategoryList(context, _categoryWoman, 'woman'),
               )
-            ],
+            ]
+            ..addAll(buildCategoryList(context, _categoryMan, 'man'))
+            ..add(Container(
+              alignment: Alignment.centerLeft,
+              padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+              color: Color(0xFFf1f1f1),
+              child: Text('女生频道', style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 16.0),),
+            ))..addAll(buildCategoryList(context, _categoryWoman, 'woman')),
           ),
         ),
       )

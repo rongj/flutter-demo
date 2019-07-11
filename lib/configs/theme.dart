@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-10 12:49:29
- * @LastEditTime: 2019-07-10 18:34:13
+ * @LastEditTime: 2019-07-11 14:25:35
  */
 
 import 'package:flutter/material.dart';
@@ -77,7 +77,7 @@ class ThemeConfig {
       unselectedWidgetColor: Colors.white,
       appBarTheme: AppBarTheme(
         elevation: 0
-      )
+      ),
       // platform: TargetPlatform.iOS
     );
   }

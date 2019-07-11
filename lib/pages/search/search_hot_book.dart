@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-05 09:41:42
- * @LastEditTime: 2019-07-08 19:59:11
+ * @LastEditTime: 2019-07-11 14:33:56
  */
 
 import 'package:flutter/material.dart';
@@ -27,7 +27,7 @@ class SearchHotBook extends StatelessWidget {
         break;
       default:
         return Colors.black26;
-    };
+    }
   }
   
   @override

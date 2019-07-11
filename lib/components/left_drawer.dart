@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-09 17:48:42
- * @LastEditTime: 2019-07-10 15:54:01
+ * @LastEditTime: 2019-07-11 10:03:45
  */
 
 import 'package:flutter/material.dart';
@@ -80,7 +80,7 @@ class _LeftDrawerState extends State<LeftDrawer> {
             onTap: () => Router.push(context, Router.scanPage),
           ),
           ListTile(
-            leading: Icon(IconData(0xe60b, fontFamily: 'iconfont'), color: Colors.black54,),
+            leading: Icon(IconData(0xeb6e, fontFamily: 'iconfont'), color: Colors.black54,),
             title: Text('主题'),
             trailing: Icon(IconData(0xe633, fontFamily: 'iconfont'), color: Colors.black26,),
             onTap: () => Router.push(context, Router.themePage),
@@ -90,6 +90,12 @@ class _LeftDrawerState extends State<LeftDrawer> {
             title: Text('路由'),
             trailing: Icon(IconData(0xe633, fontFamily: 'iconfont'), color: Colors.black26,),
             onTap: () => Router.push(context, Router.routePage),
+          ),
+          ListTile(
+            leading: Icon(IconData(0xe66c, fontFamily: 'iconfont'), color: Colors.black54,),
+            title: Text('状态管理'),
+            trailing: Icon(IconData(0xe633, fontFamily: 'iconfont'), color: Colors.black26,),
+            onTap: () => Router.push(context, Router.statePage),
           ),
           ListTile(
             leading: Icon(IconData(0xe652, fontFamily: 'iconfont'), color: Colors.black54,),
