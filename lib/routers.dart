@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-24 15:13:38
- * @LastEditTime: 2019-07-11 18:17:07
+ * @LastEditTime: 2019-07-11 18:20:03
  */
 
 import 'package:flutter/material.dart';
@@ -15,7 +15,7 @@ import 'package:app/pages/categorydetail/category_detail_page.dart';
 import 'package:app/pages/webview/webview_page.dart';
 import 'package:app/pages/error/notfound_page.dart';
 
-/* test-page */
+/* demo-page */
 import 'package:app/pages/demo/calendar/calendar_page.dart';
 import 'package:app/pages/demo/chart/chart_page.dart';
 import 'package:app/pages/demo/deviceinfo/deviceinfo_page.dart';
@@ -27,7 +27,7 @@ import 'package:app/pages/demo/scan/scan_page.dart';
 import 'package:app/pages/demo/theme/theme_page.dart';
 import 'package:app/pages/demo/video/video_page.dart';
 
-/* test-state-page */
+/* demo-state-page */
 import 'package:app/pages/demo/state/state_page.dart';
 import 'package:app/pages/demo/state/bloc/bloc_page.dart';
 import 'package:app/pages/demo/state/blocglobal/bloc_global_page.dart';
@@ -45,7 +45,7 @@ class Router {
   static const categoryDetailPage = 'categoryDetail';
   static const webviewPage = 'webview';
 
-  /* test-page */
+  /* demo-page */
   static const calendarPage = 'calendar';
   static const chartPage = 'chart';
   static const deviceinfoPage = 'deviceinfo';
@@ -57,7 +57,7 @@ class Router {
   static const themePage = 'theme';
   static const videoPage = 'video';
 
-  /* test-state-page */
+  /* demo-state-page */
   static const statePage = 'state';
   static const scopedmodelPage = 'scopedmodel';
   static const reduxPage = 'redux';
@@ -84,7 +84,7 @@ class Router {
       case webviewPage:
         return WebviewPage(title: params['title'], url: params['url'],); 
       
-      /* test-page */
+      /* demo-page */
       case calendarPage:
         return CalendarPage();
       case chartPage:
@@ -106,7 +106,7 @@ class Router {
       case videoPage:
         return VideoPage();
       
-      /* test-state-page */
+      /* demo-state-page */
       case statePage:
         return StatePage();
       case blocPage:

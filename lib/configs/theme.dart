@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-10 12:49:29
- * @LastEditTime: 2019-07-11 14:25:35
+ * @LastEditTime: 2019-07-11 20:15:03
  */
 
 import 'package:flutter/material.dart';
@@ -40,8 +40,29 @@ Map themeConfigs = {
     'dark': false,
     'primaryColor': Colors.black,
   },
-  'red' : {
+  'redAccent' : {
     'primaryColor': Colors.redAccent,
+  },
+  'blueAccent' : {
+    'primaryColor': Colors.blueAccent,
+  },
+  'greenAccent' : {
+    'primaryColor': Colors.greenAccent,
+  },
+  'pinkAccent' : {
+    'primaryColor': Colors.pinkAccent,
+  },
+  'purpleAccent' : {
+    'primaryColor': Colors.purpleAccent,
+  },
+  'orangeAccent' : {
+    'primaryColor': Colors.orangeAccent,
+  },
+  'amberAccent' : {
+    'primaryColor': Colors.amberAccent,
+  },
+  'cyanAccent' : {
+    'primaryColor': Colors.cyanAccent,
   },
 };
 
@@ -57,7 +78,7 @@ class ThemeConfig {
   ;
   ThemeConfig(String colorType) {
     Map _item = themeConfigs[colorType];
-    bool _isDark =  _item['dark'] ?? true;
+    bool _isDark =  _item['dark'] == null;
     this.primaryColor = _item['primaryColor'];
     this.backgroundColor = _isDark ? _item['backgroundColor'] ?? Color(0xFFf2f2f2) : Color(0xFF333333);
     this.iconColor = _isDark ? Colors.white : Colors.black26;
@@ -82,16 +103,50 @@ class ThemeConfig {
     );
   }
 
-  static List<Color> themeList = const [
-    Colors.white,
-    Colors.black,
-    Colors.redAccent,
-    Colors.blueAccent,
-    Colors.greenAccent,
-    Colors.pinkAccent,
-    Colors.purpleAccent,
-    Colors.orangeAccent,
-    Colors.amberAccent,
-    Colors.cyanAccent,
+  static List<Map> themeList = const [
+    {
+      'type': 'primary',
+      'color': Color(0xFFf2f2f2),
+    },
+    {
+      'type': 'white',
+      'color': Colors.white,
+    },
+    {
+      'type': 'black',
+      'color': Colors.black,
+    },
+    {
+      'type': 'redAccent',
+      'color': Colors.redAccent,
+    },
+    {
+      'type': 'blueAccent',
+      'color': Colors.blueAccent,
+    },
+    {
+      'type': 'greenAccent',
+      'color': Colors.greenAccent,
+    },
+    {
+      'type': 'pinkAccent',
+      'color': Colors.pinkAccent,
+    },
+    {
+      'type': 'purpleAccent',
+      'color': Colors.purpleAccent,
+    },
+    {
+      'type': 'orangeAccent',
+      'color': Colors.orangeAccent,
+    },
+    {
+      'type': 'amberAccent',
+      'color': Colors.amberAccent,
+    },
+    {
+      'type': 'cyanAccent',
+      'color': Colors.cyanAccent,
+    },
   ];
 }
