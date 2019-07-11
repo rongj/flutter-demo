@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-11 17:04:48
- * @LastEditTime: 2019-07-11 20:05:16
+ * @LastEditTime: 2019-07-11 20:30:53
  */
 
 import 'dart:async';
@@ -22,4 +22,4 @@ class CountBLoC {
   }
 }
 
-CountBLoC bLoC = CountBLoC();
+CountBLoC bloC = CountBLoC();

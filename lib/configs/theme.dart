@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-10 12:49:29
- * @LastEditTime: 2019-07-11 20:15:03
+ * @LastEditTime: 2019-07-11 20:19:27
  */
 
 import 'package:flutter/material.dart';
@@ -31,13 +31,13 @@ import 'package:flutter/material.dart';
 
 Map themeConfigs = {
   'primary' : {
-    'primaryColor': Color(0xFFf2f2f2),
+    'primaryColor': Color(0xFF13c4d1),
   },
   'white' : {
+    'dark': false,
     'primaryColor': Colors.white,
   },
   'black' : {
-    'dark': false,
     'primaryColor': Colors.black,
   },
   'redAccent' : {
@@ -79,9 +79,10 @@ class ThemeConfig {
   ThemeConfig(String colorType) {
     Map _item = themeConfigs[colorType];
     bool _isDark =  _item['dark'] == null;
+    print(_isDark);
     this.primaryColor = _item['primaryColor'];
     this.backgroundColor = _isDark ? _item['backgroundColor'] ?? Color(0xFFf2f2f2) : Color(0xFF333333);
-    this.iconColor = _isDark ? Colors.white : Colors.black26;
+    this.iconColor = _isDark ? Colors.white : Colors.black;
   }
   
   static ThemeData defaultTheme([Color primaryColor]) {
@@ -106,7 +107,7 @@ class ThemeConfig {
   static List<Map> themeList = const [
     {
       'type': 'primary',
-      'color': Color(0xFFf2f2f2),
+      'color': Color(0xFF13c4d1),
     },
     {
       'type': 'white',

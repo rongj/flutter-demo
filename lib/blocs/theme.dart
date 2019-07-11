@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-11 18:12:13
- * @LastEditTime: 2019-07-11 20:10:17
+ * @LastEditTime: 2019-07-11 20:52:28
  */
 
 import 'dart:async';
@@ -9,35 +9,38 @@ import 'package:app/configs/theme.dart';
 
 /* 主题配置 */
 class ThemeBLoC {
-  String _themeType = 'primary';
+  // String _themeType = 'primary';
 
-  var _themeController = StreamController<ThemeConfig>.broadcast();
+  // var _themeController = StreamController<String>.broadcast();
   
-  Stream<ThemeConfig>  get stream => _themeController.stream;
-  ThemeConfig get value => ThemeConfig(_themeType);
+  // Stream<String> get stream => _themeController.stream;
+  // // ThemeConfig get value => ThemeConfig(_themeType);
   // String get value => _themeType;
 
-  void changeTheme(_themeType) {
-    print(_themeType);
-    return _themeController.sink.add(ThemeConfig(_themeType));
-    // return _themeController.sink.add(_themeType);
+  // void changeTheme(_themeType) {
+  //   return _themeController.sink.add(_themeType);
+  //   // return _themeController.sink.add(_themeType);
+  // }
+
+  // void dispose() => _themeController.close();
+
+  String _count = 'test';
+  var _countController = StreamController<String>.broadcast();
+
+  Stream<String> get stream => _countController.stream;
+  String get value => _count;
+
+  changeTheme(type) {
+    _countController.sink.add(type);
   }
 
-  void dispose() => _themeController.close();
-  
-  // int _count = 0;
-  // var _countController = StreamController<int>.broadcast();
+  // StreamSubscription subscription = _countController.stream.listen((data) {
+  //   print("data")
+  // });
 
-  // Stream<int> get stream => _countController.stream;
-  // int get value => _count;
-
-  // increment() {
-  //   _countController.sink.add(++_count);
-  // }
-
-  // dispose() {
-  //   _countController.close();
-  // }
+  dispose() {
+    _countController.close();
+  }
 }
 
-ThemeBLoC themeBLoC = ThemeBLoC();
+ThemeBLoC themeBloC = ThemeBLoC();

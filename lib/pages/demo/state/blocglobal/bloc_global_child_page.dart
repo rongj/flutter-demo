@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-11 17:10:46
- * @LastEditTime: 2019-07-11 17:55:12
+ * @LastEditTime: 2019-07-11 20:29:57
  */
 
 import 'package:flutter/material.dart';
@@ -17,8 +17,8 @@ class BlocGlobalChildPage extends StatelessWidget {
       ),
       body: Center(
         child: StreamBuilder(
-          stream: bLoC.stream,
-          initialData: bLoC.value,
+          stream: bloC.stream,
+          initialData: bloC.value,
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             return Text(
               '${snapshot.data}',
@@ -28,7 +28,7 @@ class BlocGlobalChildPage extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => bLoC.increment(),
+        onPressed: () => bloC.increment(),
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ),

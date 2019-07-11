@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-11 17:10:46
- * @LastEditTime: 2019-07-11 17:54:05
+ * @LastEditTime: 2019-07-11 20:29:44
  */
 
 import 'package:flutter/material.dart';
@@ -18,11 +18,11 @@ class BlocGlobalHomePage extends StatelessWidget {
       ),
       body: Center(
         child: StreamBuilder(
-          stream: bLoC.stream,
-          initialData: bLoC.value,
+          stream: bloC.stream,
+          initialData: bloC.value,
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             return FlatButton(
-              onPressed: () => bLoC.increment(),
+              onPressed: () => bloC.increment(),
               child: Text(
                 '${snapshot.data}',
                 style: TextStyle(fontSize: 48.0),
