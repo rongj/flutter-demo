@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-11 18:12:13
- * @LastEditTime: 2019-07-11 20:52:28
+ * @LastEditTime: 2019-07-12 11:36:03
  */
 
 import 'dart:async';
@@ -24,7 +24,7 @@ class ThemeBLoC {
 
   // void dispose() => _themeController.close();
 
-  String _count = 'test';
+  String _count = 'primary';
   var _countController = StreamController<String>.broadcast();
 
   Stream<String> get stream => _countController.stream;

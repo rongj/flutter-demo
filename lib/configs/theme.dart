@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-10 12:49:29
- * @LastEditTime: 2019-07-11 20:19:27
+ * @LastEditTime: 2019-07-12 11:29:22
  */
 
 import 'package:flutter/material.dart';
@@ -31,6 +31,7 @@ import 'package:flutter/material.dart';
 
 Map themeConfigs = {
   'primary' : {
+    'dark': true,
     'primaryColor': Color(0xFF13c4d1),
   },
   'white' : {
@@ -38,30 +39,39 @@ Map themeConfigs = {
     'primaryColor': Colors.white,
   },
   'black' : {
+    'dark': true,
     'primaryColor': Colors.black,
   },
   'redAccent' : {
+    'dark': true,
     'primaryColor': Colors.redAccent,
   },
   'blueAccent' : {
+    'dark': true,
     'primaryColor': Colors.blueAccent,
   },
   'greenAccent' : {
+    'dark': false,
     'primaryColor': Colors.greenAccent,
   },
   'pinkAccent' : {
+    'dark': true,
     'primaryColor': Colors.pinkAccent,
   },
   'purpleAccent' : {
+    'dark': true,
     'primaryColor': Colors.purpleAccent,
   },
   'orangeAccent' : {
+    'dark': true,
     'primaryColor': Colors.orangeAccent,
   },
   'amberAccent' : {
+    'dark': false,
     'primaryColor': Colors.amberAccent,
   },
   'cyanAccent' : {
+    'dark': false,
     'primaryColor': Colors.cyanAccent,
   },
 };
@@ -103,51 +113,4 @@ class ThemeConfig {
       // platform: TargetPlatform.iOS
     );
   }
-
-  static List<Map> themeList = const [
-    {
-      'type': 'primary',
-      'color': Color(0xFF13c4d1),
-    },
-    {
-      'type': 'white',
-      'color': Colors.white,
-    },
-    {
-      'type': 'black',
-      'color': Colors.black,
-    },
-    {
-      'type': 'redAccent',
-      'color': Colors.redAccent,
-    },
-    {
-      'type': 'blueAccent',
-      'color': Colors.blueAccent,
-    },
-    {
-      'type': 'greenAccent',
-      'color': Colors.greenAccent,
-    },
-    {
-      'type': 'pinkAccent',
-      'color': Colors.pinkAccent,
-    },
-    {
-      'type': 'purpleAccent',
-      'color': Colors.purpleAccent,
-    },
-    {
-      'type': 'orangeAccent',
-      'color': Colors.orangeAccent,
-    },
-    {
-      'type': 'amberAccent',
-      'color': Colors.amberAccent,
-    },
-    {
-      'type': 'cyanAccent',
-      'color': Colors.cyanAccent,
-    },
-  ];
 }

@@ -1,24 +1,22 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-10 11:09:27
- * @LastEditTime: 2019-07-11 20:53:10
+ * @LastEditTime: 2019-07-12 11:34:21
  */
 
 import 'package:flutter/material.dart';
 import 'package:app/routers.dart';
 import 'package:app/configs/theme.dart';
-import 'package:app/components/plate_layout.dart';
 import 'package:app/blocs/theme.dart';
 
 class ThemePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-      key: Key('d'),
       stream: themeBloC.stream,
       initialData: themeBloC.value,
-      builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
-        print(snapshot.data);
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        print(snapshot);
         return Scaffold(
           appBar: AppBar(
             title: Text('主题${snapshot.data}'),
@@ -37,32 +35,21 @@ class ThemePage extends StatelessWidget {
               ),
             ],
           ),
-          body: SingleChildScrollView(
-            child: Container(
-              child: Column(
-                children: <Widget>[
-                  PlateLayout(
-                    title: '主题切换',
-                    body: Container(
-                      padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
-                      child: Wrap(
-                        spacing: 20.0,
-                        runSpacing: 20.0,
-                        children: ThemeConfig.themeList.map((Map item) {
-                          return InkWell(
-                            onTap: () => themeBloC.changeTheme(item['type']),
-                            child: Container(
-                              width: 30.0,
-                              height: 30.0,
-                              color: item['color'],
-                            ),
-                          );
-                        }).toList(),
-                      ),
-                    ),
+          body: Container(
+            width: MediaQuery.of(context).size.width,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: themeConfigs.keys.map((k){
+                Map item = themeConfigs[k];
+                return Container(
+                  width: 300.0,
+                  child: FlatButton(
+                    color: item['primaryColor'],
+                    onPressed: () => themeBloC.changeTheme(k),
+                    child: Text(k, style: TextStyle(color: item['dark'] == false ? Colors.black : Colors.white),),
                   )
-                ],
-              ),
+                );
+              }).toList(),
             ),
           ),
         );
