@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-10 12:49:29
- * @LastEditTime: 2019-07-12 11:29:22
+ * @LastEditTime: 2019-07-15 16:11:50
  */
 
 import 'package:flutter/material.dart';
@@ -99,7 +99,7 @@ class ThemeConfig {
     return ThemeData(
       primaryColor: primaryColor != null ? primaryColor : Color(0xFF13c4d1),
       backgroundColor: Color(0xFFf2f2f2),
-      scaffoldBackgroundColor: Color(0xFFf5f5f5),
+      scaffoldBackgroundColor: Color(0xFFf9f9f9),
       // accentColor: Color(0xFFffffff),
       secondaryHeaderColor: Color(0xFFF2F2F2),
       buttonTheme: ButtonThemeData(
