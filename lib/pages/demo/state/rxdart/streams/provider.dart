@@ -1,14 +1,14 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-11 17:33:37
- * @LastEditTime: 2019-07-11 18:00:07
+ * @LastEditTime: 2019-07-16 11:56:02
  */
 
 import 'package:flutter/material.dart';
 import 'main.dart';
 
 class BlocProvider extends InheritedWidget {
-  final CountBLoC bLoC = CountBLoC();
+  final CountBLoC bloc = CountBLoC();
 
   BlocProvider({
     Key key,
@@ -18,5 +18,5 @@ class BlocProvider extends InheritedWidget {
   @override
   bool updateShouldNotify(_) => true;
 
-  static CountBLoC of(BuildContext context) => (context.inheritFromWidgetOfExactType(BlocProvider) as BlocProvider).bLoC;
+  static CountBLoC of(BuildContext context) => (context.inheritFromWidgetOfExactType(BlocProvider) as BlocProvider).bloc;
 }

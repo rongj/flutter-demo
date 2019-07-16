@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-10 12:49:29
- * @LastEditTime: 2019-07-15 16:11:50
+ * @LastEditTime: 2019-07-16 21:01:46
  */
 
 import 'package:flutter/material.dart';
@@ -41,6 +41,7 @@ Map themeConfigs = {
   'black' : {
     'dark': true,
     'primaryColor': Colors.black,
+    'backgroundColor': Colors.grey,
   },
   'redAccent' : {
     'dark': true,
@@ -78,28 +79,40 @@ Map themeConfigs = {
 
 // 主题配置
 class ThemeConfig {
+  // static Map _item;
+  // ThemeConfig({String colorType}) {
+  //   _item = themeConfigs[colorType];
+  // }
+  // static bool isDark = _item['dark'] == null;
+  // static Color primaryColor = _item['primaryColor'];
+
+  
   // 主题配置
-  Color primaryColor, // 主色
-  scaffoldBackgroundColor, // 背景色
-  backgroundColor, // 面板背景色
-  iconColor,   // 图标颜色
-  iconFixedColor // appBar固定的颜色
+  // Color primaryColor, // 主色
+  // scaffoldBackgroundColor, // 背景色
+  // backgroundColor, // 面板背景色
+  // iconColor,   // 图标颜色
+  // iconFixedColor // appBar固定的颜色
   
-  ;
-  ThemeConfig(String colorType) {
+  // ;
+
+  // ThemeConfig([String colorType = 'primary']) {
+  //   Map _item = themeConfigs[colorType];
+  //   bool _isDark =  _item['dark'] == null;
+  //   this.primaryColor = _item['primaryColor'];
+  //   this.backgroundColor = _isDark ? _item['backgroundColor'] ?? Color(0xFFf2f2f2) : Color(0xFF333333);
+  //   this.iconColor = _isDark ? Colors.white : Colors.black;
+  // }
+  
+  static ThemeData defaultTheme([String colorType = 'primary']) {
     Map _item = themeConfigs[colorType];
-    bool _isDark =  _item['dark'] == null;
-    print(_isDark);
-    this.primaryColor = _item['primaryColor'];
-    this.backgroundColor = _isDark ? _item['backgroundColor'] ?? Color(0xFFf2f2f2) : Color(0xFF333333);
-    this.iconColor = _isDark ? Colors.white : Colors.black;
-  }
-  
-  static ThemeData defaultTheme([Color primaryColor]) {
+    bool _isDark =  _item['dark'] == true;
+    print(_item['backgroundColor'] ?? Color(0xFFf9f9f9));
     return ThemeData(
-      primaryColor: primaryColor != null ? primaryColor : Color(0xFF13c4d1),
-      backgroundColor: Color(0xFFf2f2f2),
-      scaffoldBackgroundColor: Color(0xFFf9f9f9),
+      primaryColor: _item['primaryColor'],
+      backgroundColor: _isDark ? _item['backgroundColor'] ?? Color(0xFFf2f2f2) : Color(0xFF333333),
+      scaffoldBackgroundColor: _item['backgroundColor'] ?? Color(0xFFf9f9f9),
+      brightness: Brightness.light,
       // accentColor: Color(0xFFffffff),
       secondaryHeaderColor: Color(0xFFF2F2F2),
       buttonTheme: ButtonThemeData(

@@ -1,10 +1,12 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-25 11:55:35
- * @LastEditTime: 2019-07-09 20:22:48
+ * @LastEditTime: 2019-07-16 14:55:53
  */
 
 import 'package:flutter/material.dart';
+import 'package:wave/config.dart';
+import 'package:wave/wave.dart';
 import 'package:app/components/appbar_menu.dart';
 import 'package:app/routers.dart';
 
@@ -37,14 +39,43 @@ class _BookShelfHeaderState extends State<BookShelfHeader> {
       flexibleSpace: FlexibleSpaceBar(
         background: Stack(
           children: <Widget>[
-            Image.asset(
-              'assets/images/timg.jpg',
-              width: MediaQuery.of(context).size.width,
-              height: _bannerHeight,
-              fit: BoxFit.cover,
+            // Image.asset(
+            //   'assets/images/timg.jpg',
+            //   width: MediaQuery.of(context).size.width,
+            //   height: _bannerHeight,
+            //   fit: BoxFit.cover,
+            // ),
+            Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [
+                    Color(0xcc000000),
+                    Theme.of(context).primaryColor,
+                  ],
+                )
+              ),
+            ),
+            WaveWidget(
+              config: CustomConfig(
+                colors: [
+                  Colors.white,
+                  Colors.white54,
+                  Colors.white30,
+                  Colors.white24,
+                ],
+                durations: [35000, 19440, 10800, 6000],
+                heightPercentages: [0.90, 0.87, 0.85, 0.8],
+              ),
+              waveAmplitude: 0,
+              size: Size(
+                  double.infinity,
+                  double.infinity,
+              ),
             ),
             Positioned(
-              top: (_bannerHeight - 16) / 2,
+              top: (_bannerHeight - 25) / 2,
               child: Container(
                 alignment: Alignment.center,
                 width: MediaQuery.of(context).size.width,

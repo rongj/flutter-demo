@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-11 17:10:46
- * @LastEditTime: 2019-07-11 18:05:16
+ * @LastEditTime: 2019-07-16 11:55:38
  */
 
 import 'package:flutter/material.dart';
@@ -10,7 +10,7 @@ import 'streams/provider.dart';
 class RxDartChildPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final bloC = BlocProvider.of(context);
+    final bloc = BlocProvider.of(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('RxDart Child'),
@@ -18,8 +18,8 @@ class RxDartChildPage extends StatelessWidget {
       ),
       body: Center(
         child: StreamBuilder(
-          stream: bloC.stream,
-          initialData: bloC.value,
+          stream: bloc.stream,
+          initialData: bloc.value,
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             return Text(
               '${snapshot.data}',
@@ -29,7 +29,7 @@ class RxDartChildPage extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => bloC.increment(),
+        onPressed: () => bloc.increment(),
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ),

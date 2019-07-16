@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-11 17:10:46
- * @LastEditTime: 2019-07-11 18:05:12
+ * @LastEditTime: 2019-07-16 11:55:46
  */
 
 import 'package:flutter/material.dart';
@@ -11,7 +11,7 @@ import 'streams/provider.dart';
 class RxDartHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final bloC = BlocProvider.of(context);
+    final bloc = BlocProvider.of(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('RxDart Home'),
@@ -19,11 +19,11 @@ class RxDartHomePage extends StatelessWidget {
       ),
       body: Center(
         child: StreamBuilder(
-          stream: bloC.stream,
-          initialData: bloC.value,
+          stream: bloc.stream,
+          initialData: bloc.value,
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             return FlatButton(
-              onPressed: () => bloC.increment(),
+              onPressed: () => bloc.increment(),
               child: Text(
                 '${snapshot.data}',
                 style: TextStyle(fontSize: 48.0),

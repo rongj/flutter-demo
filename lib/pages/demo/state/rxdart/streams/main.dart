@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-11 17:04:48
- * @LastEditTime: 2019-07-11 18:08:41
+ * @LastEditTime: 2019-07-16 11:56:08
  */
 
 import 'dart:async';
@@ -16,5 +16,5 @@ class CountBLoC {
 
   void increment() => _subject.add(++_count);
 
-  void  dispose() => _subject.close();
+  void dispose() => _subject.close();
 }
