@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-25 11:55:35
- * @LastEditTime: 2019-07-16 14:55:53
+ * @LastEditTime: 2019-07-17 13:38:03
  */
 
 import 'package:flutter/material.dart';
@@ -51,7 +51,7 @@ class _BookShelfHeaderState extends State<BookShelfHeader> {
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: [
-                    Color(0xcc000000),
+                    Color(0xCC00315f),
                     Theme.of(context).primaryColor,
                   ],
                 )
@@ -97,7 +97,7 @@ class _BookShelfHeaderState extends State<BookShelfHeader> {
                       ),
                     )
                   ],
-              ),
+                ),
               ),
             ),
           ],
@@ -105,11 +105,11 @@ class _BookShelfHeaderState extends State<BookShelfHeader> {
       ),
       title: Text(
         widget.fixed ? '书架' : '',
+        style: TextStyle(color: widget.fixed ? Theme.of(context).primaryColorDark : Colors.white),
       ),
       centerTitle: true,
-      backgroundColor: widget.fixed ? Colors.white : Colors.transparent,
-      actionsIconTheme: widget.fixed ? null : IconThemeData(color: Colors.white),
-      iconTheme: widget.fixed ? null : IconThemeData(color: Colors.white),
+      backgroundColor: widget.fixed ? Theme.of(context).primaryColorLight : Colors.transparent,
+      iconTheme: IconThemeData(color: widget.fixed ? Theme.of(context).primaryColorDark : Colors.white),
       elevation: 0.3,
       actions: widget.showCheck ? <Widget>[
         FlatButton(

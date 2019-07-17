@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-24 15:26:27
- * @LastEditTime: 2019-07-08 13:56:27
+ * @LastEditTime: 2019-07-17 13:50:35
  */
 
 import 'package:flutter/material.dart';
@@ -43,6 +43,7 @@ class _SearchPageState extends State<SearchPage> {
       appBar: AppBar(
         title: SearchHeader(),
         backgroundColor: Colors.white,
+        iconTheme: IconThemeData(color: Theme.of(context).primaryColorDark),
         elevation: 0.3,
       ),
       body: SingleChildScrollView(

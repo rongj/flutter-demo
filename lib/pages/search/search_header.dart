@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-05 09:42:37
- * @LastEditTime: 2019-07-05 13:46:04
+ * @LastEditTime: 2019-07-17 13:50:05
  */
 
 import 'package:flutter/material.dart';
@@ -34,10 +34,12 @@ class _SearchHeaderState extends State<SearchHeader> {
         children: <Widget>[
           Expanded(
             child: Theme(
-              data: ThemeData(primaryColor: Colors.transparent, hintColor: Colors.transparent,),
+              data: ThemeData().copyWith(
+                primaryColor: Colors.transparent,
+                hintColor: Colors.transparent,
+              ),
               child: TextField(
                 controller: _textController,
-                // keyboardType: TextInputType.text,
                 textInputAction: TextInputAction.search,
                 decoration: InputDecoration(
                   contentPadding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 0.0),

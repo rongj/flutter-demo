@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-08 16:05:27
- * @LastEditTime: 2019-07-08 17:58:09
+ * @LastEditTime: 2019-07-17 11:40:15
  */
 
 import 'package:flutter/material.dart';
@@ -46,8 +46,7 @@ class _WebviewPageState extends State<WebviewPage> {
       appBar: AppBar(
         title: Text(widget.title),
         centerTitle: true,
-        backgroundColor: Colors.white,
-        elevation: 0.5,
+        elevation: 0.3,
       ),
       withZoom: true,
       withLocalStorage: true,

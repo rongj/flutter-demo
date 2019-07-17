@@ -1,12 +1,12 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-09 17:48:42
- * @LastEditTime: 2019-07-16 09:54:59
+ * @LastEditTime: 2019-07-17 20:07:01
  */
 
 import 'package:flutter/material.dart';
-import 'package:app/widgets/connectivity_result.dart';
 import 'package:app/routers.dart';
+import 'package:app/utils/native_utils.dart';
 
 class LeftDrawer extends StatefulWidget {
   @override
@@ -15,6 +15,21 @@ class LeftDrawer extends StatefulWidget {
 
 class _LeftDrawerState extends State<LeftDrawer> {  
   bool _bluetoothStatus = true;
+
+  String _connectivityResult = 'Unknown';
+  
+  @override
+  void initState() {
+    super.initState();
+    getNativeData();
+  }
+
+  void getNativeData() async {
+    var _result = await NativeUtil.getConnectivityData();
+    setState(() {
+      _connectivityResult = _result;
+    });
+  }
   
   @override
   Widget build(BuildContext context) {
@@ -47,16 +62,14 @@ class _LeftDrawerState extends State<LeftDrawer> {
           ListTile(
             leading: Icon(IconData(0xe615, fontFamily: 'iconfont'), color: Colors.black54,),
             title: Text('网络状态'),
-            onTap: () {
-              NetworkState.getNetworkState();
-            },
-            trailing: Text('wifi', style: TextStyle(color: Theme.of(context).primaryColor),)
-          ),
-          ListTile(
-            leading: Icon(IconData(0xe619, fontFamily: 'iconfont'), color: Colors.black54,),
-            title: Text('定位'),
             onTap: () {},
+            trailing: Text(_connectivityResult, style: TextStyle(color: Theme.of(context).primaryColor),)
           ),
+          // ListTile(
+          //   leading: Icon(IconData(0xe619, fontFamily: 'iconfont'), color: Colors.black54,),
+          //   title: Text('定位'),
+          //   onTap: () {},
+          // ),
           ListTile(
             leading: Icon(IconData(0xe720, fontFamily: 'iconfont'), color: Colors.black54,),
             title: Text('本地通知'),

@@ -1,11 +1,10 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-20 10:22:02
- * @LastEditTime: 2019-07-16 20:41:42
+ * @LastEditTime: 2019-07-17 09:56:28
  */
 
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:app/configs/theme.dart';

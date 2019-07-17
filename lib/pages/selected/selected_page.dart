@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-24 15:26:27
- * @LastEditTime: 2019-07-10 15:40:08
+ * @LastEditTime: 2019-07-17 13:35:40
  */
 
 import 'package:flutter/material.dart';
@@ -83,9 +83,9 @@ class _SelectedPageState extends State<SelectedPage> with SingleTickerProviderSt
     bool _isEmptyList = (_currentGender == 'man' && _manList.length == 0) || (_currentGender == 'woman' && _womanList.length == 0);
     return Scaffold(
       appBar: AppBar(
-        title: Text('精选'),
+        title: Text('精选', style: TextStyle(color: Theme.of(context).primaryColorDark),),
         centerTitle: true,
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).primaryColorLight,
         elevation: 0.3,
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(36.0),

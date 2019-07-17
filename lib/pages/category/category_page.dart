@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-05 13:57:46
- * @LastEditTime: 2019-07-11 09:41:58
+ * @LastEditTime: 2019-07-17 11:29:33
  */
 
 import 'package:flutter/material.dart';
@@ -121,7 +121,6 @@ class CategoryPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('分类'),
         centerTitle: true,
-        backgroundColor: Colors.white,
         elevation: 0.5,
       ),
       body: SingleChildScrollView(

@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-10 10:13:30
- * @LastEditTime: 2019-07-10 13:37:30
+ * @LastEditTime: 2019-07-17 16:31:16
  */
 
 import 'package:flutter/material.dart';
@@ -12,7 +12,7 @@ class PromptTools {
     Fluttertoast.showToast(
       msg: msg,
       toastLength: Toast.LENGTH_LONG,
-      gravity: ToastGravity.TOP,
+      gravity: ToastGravity.CENTER,
       timeInSecForIos: 1,
       backgroundColor: Color(0xB3000000),
       textColor: Colors.white,

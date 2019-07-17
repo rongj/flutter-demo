@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-05 13:57:46
- * @LastEditTime: 2019-07-08 17:57:36
+ * @LastEditTime: 2019-07-17 11:29:48
  */
 
 
@@ -81,8 +81,7 @@ class _CatalogPageState extends State<CatalogPage> {
       appBar: AppBar(
         title: Text('目录'),
         centerTitle: true,
-        backgroundColor: Colors.white,
-        elevation: 0.5,
+        elevation: 0.3,
         actions: <Widget>[
           IconButton(
             onPressed: _handleSortChange,

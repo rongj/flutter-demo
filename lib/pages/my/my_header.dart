@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-03 15:06:03
- * @LastEditTime: 2019-07-09 20:24:34
+ * @LastEditTime: 2019-07-17 11:15:49
  */
 
 import 'package:intl/intl.dart';
@@ -46,13 +46,15 @@ class MyHeader extends StatelessWidget {
 
     return SliverAppBar(
       pinned: true,
-      title: Text(fixed ? '我的' : ''),
+      title: Text(
+        fixed ? '我的' : '',
+        style: TextStyle(color: Theme.of(context).primaryColorDark),
+      ),
       centerTitle: true,
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).primaryColorLight,
       elevation: 0.3,
       expandedHeight: 220.0 + _dragOffset,
-      actionsIconTheme: fixed ? null : IconThemeData(color: Colors.white),
-      iconTheme: fixed ? null : IconThemeData(color: Colors.white),
+      iconTheme: IconThemeData(color: fixed ? Theme.of(context).primaryColorDark : Colors.white),
       actions: <Widget>[
         IconButton(
           icon: Icon(IconData(0xe720, fontFamily: 'iconfont')),

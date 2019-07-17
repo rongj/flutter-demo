@@ -1,10 +1,11 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-24 15:13:38
- * @LastEditTime: 2019-07-11 18:20:03
+ * @LastEditTime: 2019-07-17 09:52:56
  */
 
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:app/pages/container.dart';
 import 'package:app/pages/search/search_page.dart';
 import 'package:app/pages/bookdetail/bookdetail_page.dart';
@@ -128,7 +129,7 @@ class Router {
   }
 
   static push(BuildContext context, String name, [Map params]) {
-    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context){
+    Navigator.push(context, CupertinoPageRoute(builder: (BuildContext context){
       return _buildPage(name, params);
     }),);
   }
@@ -138,7 +139,7 @@ class Router {
   }
 
   static root(BuildContext context, int index) {
-    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
+    Navigator.pushAndRemoveUntil(context, CupertinoPageRoute(builder: (BuildContext context){
       return ContainerPage(currentIndex: index,);
     }), (route) => route == null);
   }

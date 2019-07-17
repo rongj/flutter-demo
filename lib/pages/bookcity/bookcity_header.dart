@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-26 10:42:07
- * @LastEditTime: 2019-07-09 20:23:20
+ * @LastEditTime: 2019-07-17 13:37:24
  */
 
 import 'package:flutter/material.dart';
@@ -65,8 +65,7 @@ class _BookCityHeaderState extends State<BookCityHeader> {
       ),
       centerTitle: true,
       backgroundColor: widget.fixed ? Colors.white : Colors.transparent,
-      actionsIconTheme: widget.fixed ? null : IconThemeData(color: Colors.white),
-      iconTheme: widget.fixed ? null : IconThemeData(color: Colors.white),
+      iconTheme: IconThemeData(color: widget.fixed ? Theme.of(context).primaryColorDark : Colors.white),
       elevation: 0.3,
       actions: <Widget>[
         IconButton(

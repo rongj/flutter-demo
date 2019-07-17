@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-04 14:17:19
- * @LastEditTime: 2019-07-09 17:10:19
+ * @LastEditTime: 2019-07-17 11:21:35
  */
 
 import 'package:flutter/material.dart';
@@ -73,12 +73,12 @@ class _BookDetailPageState extends State<BookDetailPage> {
       appBar: AppBar(
         title: Text(
           _fixedAppBar ? _detail['bookName'] : '',
-          style: TextStyle(fontSize: 18.0),
+          style: TextStyle(fontSize: 18.0, color: _fixedAppBar ? Theme.of(context).primaryColorDark : Theme.of(context).primaryColorLight),
         ),
         centerTitle: true,
         elevation: 0,
-        backgroundColor: _fixedAppBar ? Colors.white : Theme.of(context).primaryColor,
-        iconTheme: IconThemeData(color: _fixedAppBar ? null : Colors.white),
+        backgroundColor: _fixedAppBar ? Theme.of(context).primaryColorLight : Theme.of(context).primaryColor,
+        iconTheme: IconThemeData(color: _fixedAppBar ? Theme.of(context).primaryColorDark : Colors.white),
         actions: _detail != null ? <Widget>[
           IconButton(
             onPressed: () => BottomShare.showShareSheet(context),
