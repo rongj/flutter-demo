@@ -34,8 +34,8 @@
          
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="flutterstarter"
-        android:icon="@mipmap/ic_launcher">
+        android:label="畅读小说"
+        android:icon="@mipmap/ic_launcher_new">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

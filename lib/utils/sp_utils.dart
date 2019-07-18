@@ -1,27 +1,27 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// shared_preferences 管理类
-class PreferenceUtils {
-  static PreferenceUtils _instance;
+class SpUtil {
+  static SpUtil _instance;
 
-  static PreferenceUtils get instance => PreferenceUtils();
+  static SpUtil get instance => SpUtil();
 
-  PreferenceUtils._internal();
+  SpUtil._internal();
 
-  factory PreferenceUtils() {
-    if (_instance == null) _instance = PreferenceUtils._internal();
+  factory SpUtil() {
+    if (_instance == null) _instance = SpUtil._internal();
     return _instance;
   }
 
-  saveInteger(String key, int value) => SharedPreferences.getInstance().then((sp) => sp.setInt(key, value));
+  setInteger(String key, int value) => SharedPreferences.getInstance().then((sp) => sp.setInt(key, value));
 
-  saveString(String key, String value) => SharedPreferences.getInstance().then((sp) => sp.setString(key, value));
+  setString(String key, String value) => SharedPreferences.getInstance().then((sp) => sp.setString(key, value));
 
-  saveBool(String key, bool value) => SharedPreferences.getInstance().then((sp) => sp.setBool(key, value));
+  setBool(String key, bool value) => SharedPreferences.getInstance().then((sp) => sp.setBool(key, value));
 
-  saveDouble(String key, double value) => SharedPreferences.getInstance().then((sp) => sp.setDouble(key, value));
+  setDouble(String key, double value) => SharedPreferences.getInstance().then((sp) => sp.setDouble(key, value));
 
-  saveStringList(String key, List<String> value) => SharedPreferences.getInstance().then((sp) => sp.setStringList(key, value));
+  setStringList(String key, List<String> value) => SharedPreferences.getInstance().then((sp) => sp.setStringList(key, value));
 
   Future<int> getInteger(String key, [int defaultValue = 0]) async {
     var sp = await SharedPreferences.getInstance();

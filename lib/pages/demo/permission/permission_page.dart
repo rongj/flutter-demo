@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-10 11:09:27
- * @LastEditTime: 2019-07-17 20:10:33
+ * @LastEditTime: 2019-07-18 09:44:44
  */
 
 import 'dart:io';
@@ -109,10 +109,10 @@ class _PermissionState extends State<PermissionWidget> {
         style: TextStyle(color: getPermissionColor()),
       ),
       trailing: IconButton(
-          icon: const Icon(Icons.info),
-          onPressed: () {
-            checkServiceStatus(context, _permissionGroup);
-          }),
+        icon: const Icon(Icons.info),
+        onPressed: () {
+          checkServiceStatus(context, _permissionGroup);
+        }),
       onTap: () {
         requestPermission(_permissionGroup);
       },

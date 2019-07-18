@@ -25,9 +25,9 @@ dependencies:
   cupertino_icons: ^0.1.2
   dio: ^2.1.8 
   # image_picker: ^0.6.0+10 
+  # https://github.com/best-flutter/flutter_swiper/blob/master/README-ZH.md
   flutter_swiper: ^1.1.6
   cached_network_image: ^1.0.0
-  # flutter_svg: ^0.12.4+2
   flutter_spinkit: ^3.1.0
   flutter_screenutil: ^0.5.1
   intl: ^0.15.7
@@ -60,6 +60,14 @@ dependencies:
   # https://pub.dev/packages/simple_permissions
   # simple_permissions: ^0.1.9
   permission_handler: ^3.2.0
+  # https://pub.dev/packages/qrcode_reader
+  qrcode_reader: ^0.4.4
+  # https://github.com/google/charts
+  charts_flutter: ^0.6.0
+  # https://pub.dev/packages/video_player
+  video_player: ^0.10.1+4
+  # https://github.com/apptreesoftware/flutter_calendar
+  flutter_calendar: ^0.0.8
 
 dev_dependencies:
   flutter_test:

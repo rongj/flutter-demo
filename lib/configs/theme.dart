@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-10 12:49:29
- * @LastEditTime: 2019-07-17 20:11:11
+ * @LastEditTime: 2019-07-18 16:52:22
  */
 
 import 'package:flutter/material.dart';
@@ -81,7 +81,9 @@ Map themeConfigs = {
 
 // 主题配置
 class ThemeConfig {
-  static ThemeData defaultTheme([String colorType = 'primary']) {
+  static const String defaultThemeType = 'primary';
+  
+  static ThemeData defaultTheme([String colorType = defaultThemeType]) {
     Map _item = themeConfigs[colorType];
     bool _isDark =  _item['dark'] == true;
     var _isBlack = colorType == 'dark';

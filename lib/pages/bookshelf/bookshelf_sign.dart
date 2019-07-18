@@ -1,17 +1,12 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-25 11:55:35
- * @LastEditTime: 2019-07-10 14:23:08
+ * @LastEditTime: 2019-07-18 11:08:36
  */
 
 import 'package:flutter/material.dart';
 
-class BookShelfSign extends StatefulWidget {
-  @override
-  _BookShelfSignState createState() => _BookShelfSignState();
-}
-
-class _BookShelfSignState extends State<BookShelfSign> {
+class BookShelfSign extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(

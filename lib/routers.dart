@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-24 15:13:38
- * @LastEditTime: 2019-07-17 09:52:56
+ * @LastEditTime: 2019-07-18 17:25:53
  */
 
 import 'package:flutter/material.dart';
@@ -38,34 +38,34 @@ import 'package:app/pages/demo/state/rxdart/rxdart_page.dart';
 import 'package:app/pages/demo/state/scoped_model/scoped_model_page.dart';
 
 class Router {
-  static const searchPage = 'search';
-  static const bookdetailPage = 'bookdetail';
-  static const rankPage = 'rank';
-  static const catalogPage = 'catalog';
-  static const categoryPage = 'category';
-  static const categoryDetailPage = 'categoryDetail';
-  static const webviewPage = 'webview';
+  static const String searchPage = 'search';
+  static const String bookdetailPage = 'bookdetail';
+  static const String rankPage = 'rank';
+  static const String catalogPage = 'catalog';
+  static const String categoryPage = 'category';
+  static const String categoryDetailPage = 'categoryDetail';
+  static const String webviewPage = 'webview';
 
   /* demo-page */
-  static const calendarPage = 'calendar';
-  static const chartPage = 'chart';
-  static const deviceinfoPage = 'deviceinfo';
-  static const imagepreviewPage = 'imagepreview';
-  static const mapPage = 'map';
-  static const permissionPage = 'permission';
-  static const routePage = 'route';
-  static const scanPage = 'scan';
-  static const themePage = 'theme';
-  static const videoPage = 'video';
+  static const String calendarPage = 'calendar';
+  static const String chartPage = 'chart';
+  static const String deviceinfoPage = 'deviceinfo';
+  static const String imagepreviewPage = 'imagepreview';
+  static const String mapPage = 'map';
+  static const String permissionPage = 'permission';
+  static const String routePage = 'route';
+  static const String scanPage = 'scan';
+  static const String themePage = 'theme';
+  static const String videoPage = 'video';
 
   /* demo-state-page */
-  static const statePage = 'state';
-  static const scopedmodelPage = 'scopedmodel';
-  static const reduxPage = 'redux';
-  static const blocPage = 'bloc';
-  static const blocglobalPage = 'blocglobal';
-  static const rxdartPage = 'rxdart';
-  static const eventbusPage = 'eventbus';
+  static const String statePage = 'state';
+  static const String scopedmodelPage = 'scopedmodel';
+  static const String reduxPage = 'redux';
+  static const String blocPage = 'bloc';
+  static const String blocglobalPage = 'blocglobal';
+  static const String rxdartPage = 'rxdart';
+  static const String eventbusPage = 'eventbus';
 
 
   static Widget _buildPage(String name, Map params) {
@@ -138,7 +138,7 @@ class Router {
     Navigator.pop(context);
   }
 
-  static root(BuildContext context, int index) {
+  static root(BuildContext context, [int index = 0]) {
     Navigator.pushAndRemoveUntil(context, CupertinoPageRoute(builder: (BuildContext context){
       return ContainerPage(currentIndex: index,);
     }), (route) => route == null);
