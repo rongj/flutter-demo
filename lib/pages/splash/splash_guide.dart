@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-18 10:13:13
- * @LastEditTime: 2019-07-18 17:33:57
+ * @LastEditTime: 2019-07-19 10:24:52
  */
 
 import 'package:flutter/material.dart';
@@ -26,17 +26,17 @@ class SplashGuide extends StatelessWidget {
     {
       'title': '新人福利',
       'subtitle': '注册即送600书币，精彩小说读不停',
-      'img': 'assets/images/guide3.jpg',
+      'img': 'assets/images/guide2.jpg',
     },
     {
       'title': '分享福利',
       'subtitle': '分享APP给好友，更多书币等你拿',
-      'img': 'assets/images/guide6.jpg',
+      'img': 'assets/images/guide3.jpg',
     },
     {
       'title': '享受阅读',
       'subtitle': '读小说，专属好礼送不停',
-      'img': 'assets/images/guide8.jpg',
+      'img': 'assets/images/guide4.jpg',
     },
   ];
   

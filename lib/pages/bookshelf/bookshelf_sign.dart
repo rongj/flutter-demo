@@ -1,10 +1,11 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-25 11:55:35
- * @LastEditTime: 2019-07-18 11:08:36
+ * @LastEditTime: 2019-07-19 15:34:00
  */
 
 import 'package:flutter/material.dart';
+import 'package:app/routers.dart';
 
 class BookShelfSign extends StatelessWidget {
   @override
@@ -36,15 +37,13 @@ class BookShelfSign extends StatelessWidget {
           ),
           Container(
             height: 30.0,
-            padding: EdgeInsets.symmetric(horizontal: 10.0),
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15.0),
+            child: FlatButton(
+              onPressed: (){
+                Router.push(context, Router.loginPage);
+              },
               color: Theme.of(context).primaryColor,
-            ),
-            child: Text(
-              '立即签到',
-              style: TextStyle(color: Colors.white)
+              shape: StadiumBorder(),
+              child: Text('立即签到', style: TextStyle(color: Colors.white)),
             ),
           )
         ],

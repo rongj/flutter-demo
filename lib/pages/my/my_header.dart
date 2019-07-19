@@ -1,13 +1,14 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-03 15:06:03
- * @LastEditTime: 2019-07-17 11:15:49
+ * @LastEditTime: 2019-07-19 18:47:01
  */
 
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:app/widgets/custom_refresh_indicator.dart';
+import 'package:app/widgets/custom_sliver_appbar.dart';
 import 'my_header_avatar.dart';
 import 'my_header_info.dart';
 
@@ -44,17 +45,10 @@ class MyHeader extends StatelessWidget {
       _refresText = "取消刷新";
     }
 
-    return SliverAppBar(
-      pinned: true,
-      title: Text(
-        fixed ? '我的' : '',
-        style: TextStyle(color: Theme.of(context).primaryColorDark),
-      ),
-      centerTitle: true,
-      backgroundColor: Theme.of(context).primaryColorLight,
-      elevation: 0.3,
+    return CustomSliverAppBar(
+      fixed: fixed,
+      title: '我的',
       expandedHeight: 220.0 + _dragOffset,
-      iconTheme: IconThemeData(color: fixed ? Theme.of(context).primaryColorDark : Colors.white),
       actions: <Widget>[
         IconButton(
           icon: Icon(IconData(0xe720, fontFamily: 'iconfont')),
@@ -62,55 +56,53 @@ class MyHeader extends StatelessWidget {
           onPressed: () {}
         ),
       ],
-      flexibleSpace: FlexibleSpaceBar(
-        background: Stack(
-          children: <Widget>[
-            Container(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [Theme.of(context).primaryColor, Colors.blueAccent],
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter
-                )
+      spaceBar: Stack(
+        children: <Widget>[
+          Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Theme.of(context).primaryColor, Colors.blueAccent],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter
               )
-            ),
-            Positioned(
-              top: _spinOffset,
-              child: Container(
-                alignment: Alignment.center,
-                width: MediaQuery.of(context).size.width,
-                child: Column(
-                  children: <Widget>[
-                    SpinKitThreeBounce(
+            )
+          ),
+          Positioned(
+            top: _spinOffset,
+            child: Container(
+              alignment: Alignment.center,
+              width: MediaQuery.of(context).size.width,
+              child: Column(
+                children: <Widget>[
+                  SpinKitThreeBounce(
+                    color: Colors.white,
+                    size: 20.0,
+                  ),
+                  Text(
+                    _refresText,
+                    style: TextStyle(
                       color: Colors.white,
-                      size: 20.0,
+                      fontSize: 10.0,
                     ),
-                    Text(
-                      _refresText,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 10.0,
-                      ),
-                    )
-                  ],
-                ),
+                  )
+                ],
               ),
             ),
-            Positioned(
-              bottom: 20.0,
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                padding: EdgeInsets.symmetric(horizontal: 20.0),
-                child: Column(
-                  children: <Widget>[
-                    MyHeaderAvatar(),
-                    MyHeaderInfo()
-                  ],
-                ),
-              )
+          ),
+          Positioned(
+            bottom: 20.0,
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              padding: EdgeInsets.symmetric(horizontal: 20.0),
+              child: Column(
+                children: <Widget>[
+                  MyHeaderAvatar(),
+                  MyHeaderInfo()
+                ],
               ),
-          ],
-        )
+            )
+            ),
+        ],
       )
     );
   }

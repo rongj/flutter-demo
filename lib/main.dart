@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-20 10:22:02
- * @LastEditTime: 2019-07-18 20:40:41
+ * @LastEditTime: 2019-07-19 11:54:18
  */
 
 import 'package:flutter/material.dart';
@@ -9,7 +9,6 @@ import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:app/configs/theme.dart';
 import 'package:app/blocs/bloc_index.dart';
-import 'package:app/pages/container.dart';
 import 'package:app/pages/splash/splash_page.dart';
 import 'package:app/utils/sp_utils.dart';
 import 'package:app/configs/constant.dart';

@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-24 15:13:38
- * @LastEditTime: 2019-07-18 17:25:53
+ * @LastEditTime: 2019-07-19 15:07:18
  */
 
 import 'package:flutter/material.dart';
@@ -14,6 +14,7 @@ import 'package:app/pages/catalog/catalog_page.dart';
 import 'package:app/pages/category/category_page.dart';
 import 'package:app/pages/categorydetail/category_detail_page.dart';
 import 'package:app/pages/webview/webview_page.dart';
+import 'package:app/pages/login/login_page.dart';
 import 'package:app/pages/error/notfound_page.dart';
 
 /* demo-page */
@@ -44,6 +45,7 @@ class Router {
   static const String catalogPage = 'catalog';
   static const String categoryPage = 'category';
   static const String categoryDetailPage = 'categoryDetail';
+  static const String loginPage = 'login';
   static const String webviewPage = 'webview';
 
   /* demo-page */
@@ -82,6 +84,8 @@ class Router {
         return CategoryPage();
       case categoryDetailPage:
         return CategoryDetailPage(title: params['title'], gender: params['gender'], type: params['type'],);
+      case loginPage:
+        return LoginPage();
       case webviewPage:
         return WebviewPage(title: params['title'], url: params['url'],); 
       

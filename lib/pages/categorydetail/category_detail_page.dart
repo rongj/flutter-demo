@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-05 15:20:39
- * @LastEditTime: 2019-07-09 12:04:55
+ * @LastEditTime: 2019-07-19 10:02:51
  */
 
 import 'package:flutter/material.dart';
@@ -64,8 +64,7 @@ class _CategoryDetailPageState extends State<CategoryDetailPage> {
       appBar: AppBar(
         title: Text(widget.title),
         centerTitle: true,
-        backgroundColor: Colors.white,
-        elevation: 0.5,
+        elevation: 0.3,
       ),
       body: SingleChildScrollView(
         child: Column(

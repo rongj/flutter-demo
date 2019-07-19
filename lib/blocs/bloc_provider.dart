@@ -1,12 +1,18 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-16 10:06:16
- * @LastEditTime: 2019-07-16 11:12:01
+ * @LastEditTime: 2019-07-19 15:38:41
  */
 
 import 'package:flutter/material.dart';
 
 abstract class BlocBase {
+  // Future getData();
+
+  // Future onRefresh();
+
+  // Future onLoadMore();
+  
   void dispose();
 }
 

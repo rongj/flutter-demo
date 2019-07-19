@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-24 15:26:27
- * @LastEditTime: 2019-07-10 15:32:29
+ * @LastEditTime: 2019-07-19 17:15:10
  */
 
 import 'package:flutter/material.dart';
@@ -53,14 +53,14 @@ class _BookCityPageState extends State<BookCityPage> with SingleTickerProviderSt
     List _res2 = await Api.getGuessList();
     List _res3 = await Api.getQualityList();
     List _res4 = await Api.getHotList();
-    if(mounted) {
-      setState(() {
-        _weekDataSource = _res;
-        _guessDataSource = _res2;
-        _qualityDataSource = _res3;
-        _hotDataSource = _res4;
-      });
-    }
+    if(!mounted) return;
+    
+    setState(() {
+      _weekDataSource = _res;
+      _guessDataSource = _res2;
+      _qualityDataSource = _res3;
+      _hotDataSource = _res4;
+    });
   }
 
   @override

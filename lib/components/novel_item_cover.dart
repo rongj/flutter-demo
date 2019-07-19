@@ -1,11 +1,11 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-27 15:16:02
- * @LastEditTime: 2019-07-10 13:38:06
+ * @LastEditTime: 2019-07-19 10:00:46
  */
 
 import 'package:flutter/material.dart';
-import 'package:transparent_image/transparent_image.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class NovelItemCover extends StatelessWidget {
   NovelItemCover({
@@ -36,14 +36,18 @@ class NovelItemCover extends StatelessWidget {
           decoration: BoxDecoration(
             border: Border.all(color: Color(0xFFE8E8E8), width: 0.5),
             borderRadius: BorderRadius.circular(2.0),
-            image: DecorationImage(
-              image: NetworkImage(img),
-              fit: BoxFit.fill
-            )
+            // image: DecorationImage(
+            //   image: CachedNetworkImageProvider(img)
+            // )
           ),
-          child: FadeInImage.assetNetwork(
-            image: img,
-            placeholder: 'assets/images/timg.gif',
+          // child: FadeInImage.assetNetwork(
+          //   image: img,
+          //   placeholder: 'assets/images/timg.gif',
+          //   fit: BoxFit.cover,
+          // ),
+          child: CachedNetworkImage(
+            imageUrl: img,
+            placeholder: (context, url) => Image.asset('assets/images/timg.gif'),
             fit: BoxFit.cover,
           ),
         ),

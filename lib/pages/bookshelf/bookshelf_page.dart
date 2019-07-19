@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-24 15:26:27
- * @LastEditTime: 2019-07-11 10:42:27
+ * @LastEditTime: 2019-07-19 18:04:34
  */
 
 import 'package:flutter/material.dart';
@@ -10,6 +10,7 @@ import 'bookshelf_sign.dart';
 import 'bookshelf_list.dart';
 import 'package:app/services/mock.dart';
 import 'package:app/utils/prompt_tools.dart';
+import 'package:app/widgets/custom_sliver_view.dart';
 
 class BookShelfPage extends StatefulWidget {
   BookShelfPage({
@@ -23,8 +24,6 @@ class BookShelfPage extends StatefulWidget {
 }
 
 class _BookShelfPageState extends State<BookShelfPage> {
-  ScrollController _controller;
-  bool _fixedAppBar = false;
   List _novelList = [];
   bool _showCheck = false;
   List _checkedKeys = [];
@@ -33,12 +32,6 @@ class _BookShelfPageState extends State<BookShelfPage> {
   void initState() {
     super.initState();
     loadData();
-    _controller = ScrollController();
-    _controller.addListener(() {
-      setState(() {
-        _fixedAppBar = _controller.position.pixels > 130;
-      });
-    });
   }
 
   void loadData() async {
@@ -139,34 +132,34 @@ class _BookShelfPageState extends State<BookShelfPage> {
   @override
   void dispose() {
     super.dispose();
-    _controller.dispose();
   }
   
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      controller: _controller,
-      slivers: <Widget>[
-        BookShelfHeader(
-          fixed: _fixedAppBar,
-          showCheck: _showCheck,
-          onCheckCancel: _onCheckCancel,
-        ),
-        SliverToBoxAdapter(
-          child: Column(
-            children: <Widget>[
-              BookShelfSign(),
-              BookShelfList(
-                showCheck: _showCheck,
-                dataSource: _novelList,
-                onLongPress: _onLongPress,
-                checkedKeys: _checkedKeys,
-                onItemCheck: _onItemCheck,
-              ),
-            ],
+    return CustomSliverView(
+      builder: (bool fixedApp, ScrollController controller) {
+        return [
+          BookShelfHeader(
+            fixed: fixedApp,
+            showCheck: _showCheck,
+            onCheckCancel: _onCheckCancel,
+          ),
+          SliverToBoxAdapter(
+            child: Column(
+              children: <Widget>[
+                BookShelfSign(),
+                BookShelfList(
+                  showCheck: _showCheck,
+                  dataSource: _novelList,
+                  onLongPress: _onLongPress,
+                  checkedKeys: _checkedKeys,
+                  onItemCheck: _onItemCheck,
+                ),
+              ],
+            )
           )
-        )
-      ],
+        ];
+      },
     );
   }
 }
