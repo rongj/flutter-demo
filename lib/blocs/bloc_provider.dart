@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-16 10:06:16
- * @LastEditTime: 2019-07-19 15:38:41
+ * @LastEditTime: 2019-07-23 20:26:11
  */
 
 import 'package:flutter/material.dart';
@@ -41,7 +41,7 @@ class BlocProvider<T extends BlocBase> extends StatefulWidget {
 class _BlocProviderState<T> extends State<BlocProvider<BlocBase>> {
   @override
   void dispose() {
-    widget.bloc.dispose();
+    widget.bloc?.dispose();
     super.dispose();
   }
   

@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-19 17:27:52
- * @LastEditTime: 2019-07-19 18:02:37
+ * @LastEditTime: 2019-07-23 17:00:51
  */
 
 import 'package:flutter/material.dart';
@@ -24,8 +24,7 @@ class _CustomSliverViewState extends State<CustomSliverView> {
   @override
   void initState() {
     super.initState();
-    _controller = ScrollController();
-    _controller.addListener(() {
+    _controller = ScrollController()..addListener(() {
       setState(() {
         _fixedAppBar = _controller.position.pixels > 130;
       });

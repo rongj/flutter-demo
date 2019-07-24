@@ -1,14 +1,14 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-17 20:51:01
- * @LastEditTime: 2019-07-18 20:40:25
+ * @LastEditTime: 2019-07-23 15:32:31
  */
 
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'splash_guide.dart';
 import 'splash_startup.dart';
-import 'package:flutter/services.dart';
+// import 'package:flutter/services.dart';
 import 'package:app/routers.dart';
 import 'package:app/utils/sp_utils.dart';
 import 'package:app/configs/constant.dart';
@@ -27,7 +27,7 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
-    SystemChrome.setEnabledSystemUIOverlays([]);
+    // SystemChrome.setEnabledSystemUIOverlays([]);
     SpUtil.instance.getBool(Constant.SPLASH_GUIDE_HIDE, false).then((bool value) {
         setState(() {
           _hideSplashGuide = value;
@@ -77,7 +77,7 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void dispose() {
     super.dispose();
-    SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.top]);
+    // SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.top]);
     _timer?.cancel();
   }
   

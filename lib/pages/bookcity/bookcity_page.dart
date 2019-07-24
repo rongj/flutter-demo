@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-24 15:26:27
- * @LastEditTime: 2019-07-19 17:15:10
+ * @LastEditTime: 2019-07-23 17:26:41
  */
 
 import 'package:flutter/material.dart';
@@ -21,7 +21,7 @@ class BookCityPage extends StatefulWidget {
 class _BookCityPageState extends State<BookCityPage> with SingleTickerProviderStateMixin {
   ScrollController _controller;
   TabController _tabController;
-  static List<String> _tabs = ['推荐', '男生', '女生', '免费'];
+  List<String> _tabs = ['推荐', '男生', '女生', '免费'];
   bool _fixedAppBar = false;
   
   List _weekDataSource = [];  // 本周热门
@@ -53,6 +53,7 @@ class _BookCityPageState extends State<BookCityPage> with SingleTickerProviderSt
     List _res2 = await Api.getGuessList();
     List _res3 = await Api.getQualityList();
     List _res4 = await Api.getHotList();
+
     if(!mounted) return;
     
     setState(() {

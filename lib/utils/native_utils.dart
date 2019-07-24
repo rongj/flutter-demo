@@ -1,12 +1,11 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-17 14:06:46
- * @LastEditTime: 2019-07-17 14:33:53
+ * @LastEditTime: 2019-07-23 15:55:04
  */
 
 import 'dart:async';
 import 'package:connectivity/connectivity.dart';
-// import 'package:battery/battery.dart';
 
 class NativeUtil {
   static Connectivity _connectivity = Connectivity();

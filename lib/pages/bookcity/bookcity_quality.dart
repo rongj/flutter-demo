@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-06-26 11:02:31
- * @LastEditTime: 2019-07-19 15:30:46
+ * @LastEditTime: 2019-07-23 17:24:36
  */
 
 import 'dart:convert' show json;
@@ -22,7 +22,6 @@ class BookCityQuality extends StatefulWidget {
 }
 
 class _BookCityQualityState extends State<BookCityQuality> {
-
   int _currentIndex = 0;
 
   @override
@@ -68,9 +67,9 @@ class _BookCityQualityState extends State<BookCityQuality> {
         child: Wrap(
           spacing: 20.0,
           runSpacing: 15.0,
-          children: List<Widget>.generate(6, (index) {
+          children: widget.dataSource.asMap().keys.map((index) {
             Map _item = widget.dataSource[index + _currentIndex*6];
-              String _img = _item['imgjs'] != null ? json.decode(_item['imgjs'])[0]['url'] : _item['img'];
+            String _img = _item['imgjs'] != null ? json.decode(_item['imgjs'])[0]['url'] : _item['img'];
             return InkWell(
               onTap: () {
                 Router.push(context, Router.bookdetailPage, { 'bookId': _item['bookid'] });
@@ -81,7 +80,7 @@ class _BookCityQualityState extends State<BookCityQuality> {
                 subtitle: _item['author'],
               )
             );
-          }),
+          }).toList()
         ),
       )
     );

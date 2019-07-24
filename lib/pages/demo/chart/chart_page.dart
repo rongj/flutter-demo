@@ -1,7 +1,7 @@
 /*
  * @Author: Rongj
  * @Date: 2019-07-10 11:09:27
- * @LastEditTime: 2019-07-18 20:31:52
+ * @LastEditTime: 2019-07-23 15:54:10
  */
 
 import 'package:flutter/material.dart';
@@ -27,7 +27,6 @@ class ChartPage extends StatelessWidget {
       )
     ];
   }
-  
   
   @override
   Widget build(BuildContext context) {
